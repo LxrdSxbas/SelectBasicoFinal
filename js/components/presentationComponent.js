@@ -373,11 +373,11 @@ export class PresentationComponent {
       <div class="expo-presentation-viewport">
         <!-- TOPBAR DE LA EXPOSICIÓN -->
         <header class="expo-pres-topbar">
-          <div class="expo-pres-brand">
-            <span class="oracle-logo-icon" style="width: 26px; height: 26px; font-size: 13px;">O</span>
-            <div>
+          <div class="expo-pres-brand" style="display: flex; align-items: center; gap: 14px;">
+            <img src="img/logosistemas2024.png" alt="Logo Sistemas UPC" style="height: 40px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,200,83,0.35));">
+            <div style="border-left: 1px solid rgba(255,255,255,0.12); padding-left: 12px;">
               <div style="font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.2;">ExpoDB Básico</div>
-              <div style="color: #38bdf8; font-size: 0.78rem; font-weight: 600;">Presentador: Juan Sebastián Patiño</div>
+              <div style="color: #69f0ae; font-size: 0.78rem; font-weight: 600;">Presentador: Juan Sebastián Patiño &bull; UPC</div>
             </div>
           </div>
 

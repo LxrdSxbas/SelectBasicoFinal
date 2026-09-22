@@ -1,41 +1,49 @@
 /* ==========================================================================
-   variables.css - Sistema de Diseño ExpoDB Básico (Oracle Cyber-Académico)
-   Conforme a la Constitución del Proyecto (Art. III.3)
+   variables.css - Sistema de Diseño Institucional (Ingeniería de Sistemas - UPC)
+   Universidad Popular del Cesar & ExpoDB Básico
    ========================================================================== */
 
 :root {
-  /* --- Paleta Principal (Oracle & Dark Obsidian) --- */
-  --oracle-red: #ea1c04;
-  --oracle-red-hover: #ff2b12;
-  --oracle-red-glow: rgba(234, 28, 4, 0.4);
-  --oracle-red-subtle: rgba(234, 28, 4, 0.12);
+  /* --- Paleta Institucional (Ingeniería de Sistemas - UPC) --- */
+  --upc-green: #00a854;
+  --upc-green-bright: #00c853;
+  --upc-green-dark: #006837;
+  --upc-green-neon: #00e676;
+  --upc-green-glow: rgba(0, 200, 83, 0.45);
+  --upc-green-subtle: rgba(0, 200, 83, 0.14);
 
-  /* Fondos Obsidian / Cyber */
-  --bg-abyss: #05070a;
-  --bg-obsidian: #090c12;
-  --bg-surface: #0f141f;
-  --bg-surface-elevated: #161e2e;
-  --bg-surface-glass: rgba(15, 20, 31, 0.78);
-  --bg-card: rgba(22, 30, 46, 0.7);
+  /* Mapeo del Acento Principal al Verde Institucional de Sistemas UPC */
+  --oracle-red: #00c853;
+  --oracle-red-hover: #00e676;
+  --oracle-red-glow: rgba(0, 200, 83, 0.45);
+  --oracle-red-subtle: rgba(0, 200, 83, 0.14);
+
+  /* Fondos Obsidian con Tinte Institucional Forest/Cyber UPC */
+  --bg-abyss: #030805;
+  --bg-obsidian: #061009;
+  --bg-surface: #0b1a10;
+  --bg-surface-elevated: #102417;
+  --bg-surface-glass: rgba(11, 26, 16, 0.84);
+  --bg-card: rgba(16, 36, 23, 0.74);
 
   /* Bordes y Líneas */
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-glass: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(234, 28, 4, 0.35);
-  --border-focus: #00e5ff;
+  --border-accent: rgba(0, 200, 83, 0.35);
+  --border-focus: #00e676;
 
-  /* Semánticos y Secundarios */
-  --neon-cyan: #00e5ff;
-  --neon-cyan-glow: rgba(0, 229, 255, 0.35);
-  --neon-cyan-subtle: rgba(0, 229, 255, 0.12);
+  /* Semánticos y Secundarios (UPC & Relational Math) */
+  --neon-cyan: #00f0ff;
+  --neon-cyan-glow: rgba(0, 240, 255, 0.35);
+  --neon-cyan-subtle: rgba(0, 240, 255, 0.12);
 
   --amber-gold: #f59e0b;
   --amber-glow: rgba(245, 158, 11, 0.35);
   --amber-subtle: rgba(245, 158, 11, 0.12);
 
-  --emerald-green: #10b981;
-  --emerald-glow: rgba(16, 185, 129, 0.35);
-  --emerald-subtle: rgba(16, 185, 129, 0.12);
+  --emerald-green: #00e676;
+  --emerald-glow: rgba(0, 230, 118, 0.35);
+  --emerald-subtle: rgba(0, 230, 118, 0.12);
 
   --purple-relational: #a855f7;
   --purple-subtle: rgba(168, 85, 247, 0.12);
@@ -44,7 +52,7 @@
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --text-inverse: #05070a;
+  --text-inverse: #030805;
 
   /* --- Tipografías (Google Fonts) --- */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -69,11 +77,12 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* --- Sombras y Efectos Glow --- */
+  /* --- Sombras y Efectos Glow Institucionales --- */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.8);
-  --shadow-glow-red: 0 0 20px var(--oracle-red-glow);
+  --shadow-glow-green: 0 0 20px var(--upc-green-glow);
+  --shadow-glow-red: 0 0 20px var(--upc-green-glow);
   --shadow-glow-cyan: 0 0 20px var(--neon-cyan-glow);
 
   /* --- Transiciones --- */
