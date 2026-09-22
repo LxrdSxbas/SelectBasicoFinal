@@ -374,7 +374,7 @@ export class PresentationComponent {
         <!-- TOPBAR DE LA EXPOSICIÓN -->
         <header class="expo-pres-topbar">
           <div class="expo-pres-brand">
-            <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 38px; width: auto; object-fit: contain;">
+            <span class="oracle-logo-icon" style="width: 26px; height: 26px; font-size: 13px;">O</span>
             <div>
               <div style="font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.2;">ExpoDB Básico</div>
               <div style="color: #38bdf8; font-size: 0.78rem; font-weight: 600;">Presentador: Juan Sebastián Patiño</div>
