@@ -374,10 +374,10 @@ export class PresentationComponent {
         <!-- TOPBAR DE LA EXPOSICIÓN -->
         <header class="expo-pres-topbar">
           <div class="expo-pres-brand">
-            <span class="oracle-logo-icon" style="width: 26px; height: 26px; font-size: 13px;">O</span>
+            <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 38px; width: auto; object-fit: contain;">
             <div>
-              <span style="font-weight: 800; font-size: 1rem; color: #fff;">ExpoDB Básico</span>
-              <span style="color: var(--text-muted); font-size: 0.75rem; margin-left: 6px;">Modo Exposición en Clase</span>
+              <div style="font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.2;">ExpoDB Básico</div>
+              <div style="color: #38bdf8; font-size: 0.78rem; font-weight: 600;">Presentador: Juan Sebastián Patiño</div>
             </div>
           </div>
 
@@ -425,8 +425,10 @@ export class PresentationComponent {
             </button>
           </div>
 
-          <div class="expo-dock-shortcuts">
-            <span>Atajos: <kbd>Espacio</kbd> avanzar &bull; <kbd>Tab</kbd> alternar concepto/ejemplo &bull; <kbd>Esc</kbd> salir</span>
+          <div class="expo-dock-shortcuts" style="display: flex; align-items: center; gap: 16px;">
+            <span style="color: #cbd5e1; font-size: 0.8rem;">👤 <strong>Juan Sebastián Patiño</strong> &bull; 🎓 <strong>Amílkar Sierra</strong></span>
+            <span style="color: #334155;">|</span>
+            <span>Atajos: <kbd>Espacio</kbd> avanzar &bull; <kbd>Tab</kbd> alternar &bull; <kbd>Esc</kbd> salir</span>
           </div>
         </footer>
       </div>

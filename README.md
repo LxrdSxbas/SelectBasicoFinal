@@ -93,6 +93,14 @@ http://localhost:8080
 
 ---
 
+## 👥 Créditos Académicos
+
+- **Presentador / Estudiante:** Juan Sebastián Patiño
+- **Docente:** Ing. Amílkar Sierra
+- **Programa:** Ingeniería de Sistemas
+
+---
+
 ## 📜 Licencia y Constitución
 
 Proyecto gobernado por la **Constitución del Proyecto** (`Constitucion.md`).

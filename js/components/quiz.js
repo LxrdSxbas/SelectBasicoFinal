@@ -195,6 +195,17 @@ export class QuizComponent {
               Has respondido las 7 preguntas del temario constitucional con un puntaje final de 
               <strong style="color: var(--neon-cyan); font-size: 1.2em;">${correctCount} de ${totalQuestions} (${Math.round((correctCount / totalQuestions) * 100)}%)</strong>.
             </p>
+            <div style="margin: 16px auto var(--space-lg); padding: 10px 18px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); max-width: 500px; display: flex; justify-content: space-around; align-items: center; font-size: 0.85rem;">
+              <div>
+                <span style="color: var(--neon-cyan); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; display: block;">Presentador</span>
+                <strong style="color: #fff;">Juan Sebastián Patiño</strong>
+              </div>
+              <div style="height: 24px; width: 1px; background: var(--border-subtle);"></div>
+              <div>
+                <span style="color: var(--amber-gold); font-size: 0.7rem; text-transform: uppercase; font-weight: 700; display: block;">Docente</span>
+                <strong style="color: #fff;">Amílkar Sierra</strong>
+              </div>
+            </div>
             <div style="display: flex; justify-content: center; gap: 12px;">
               <button class="btn-execute btn-quiz-restart">↺ Reiniciar Cuestionario</button>
               <a href="#section-8" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 6px;">

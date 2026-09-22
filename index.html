@@ -28,10 +28,19 @@
     <aside class="sidebar" id="sidebarNav" aria-label="Navegación del curso">
       <div class="sidebar-header">
         <div class="brand-badge">
-          <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;">
-          <span class="brand-title">ExpoDB Básico</span>
+          <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 38px; width: auto; object-fit: contain; border-radius: 4px;">
+          <div>
+            <span class="brand-title">ExpoDB Básico</span>
+            <div class="brand-tagline">Oracle SQL &bull; Temario SELECT</div>
+          </div>
         </div>
-        <div class="brand-tagline">Plataforma Educativa Oracle SQL &bull; Temario SELECT</div>
+        <div class="presenter-badge" style="display: flex; align-items: center; gap: 8px; margin-top: 10px; padding: 6px 10px; background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: var(--radius-sm);">
+          <span style="font-size: 1rem;">👤</span>
+          <div>
+            <span style="font-size: 0.68rem; color: var(--neon-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Presentador</span>
+            <strong style="color: #ffffff; font-size: 0.85rem;">Juan Sebastián Patiño</strong>
+          </div>
+        </div>
       </div>
 
       <nav class="sidebar-nav">
@@ -126,6 +135,13 @@
       </nav>
 
       <div class="sidebar-footer">
+        <div class="docente-badge" style="display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-sm); margin-bottom: 8px;">
+          <span style="font-size: 1rem;">🎓</span>
+          <div>
+            <span style="font-size: 0.68rem; color: var(--amber-gold); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Docente</span>
+            <strong style="color: #ffffff; font-size: 0.85rem;">Amílkar Sierra</strong>
+          </div>
+        </div>
         <a href="Constitucion.md" target="_blank" class="constitution-link">
           <span>📜</span> Ver Constitución del Proyecto
         </a>
@@ -141,9 +157,13 @@
     <header class="topbar">
       <div class="topbar-left">
         <button class="mobile-menu-btn" id="btnToggleMobileMenu" aria-label="Abrir Menú">☰</button>
+        <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 34px; width: auto; object-fit: contain; margin-right: 4px;">
         <div class="topbar-title-group">
           <span class="topbar-title">ExpoDB Básico</span>
-          <span class="topbar-subtitle">Oracle SQL Simulator</span>
+          <span class="topbar-subtitle" style="display: flex; align-items: center; gap: 6px;">
+            <span>&bull;</span>
+            <span style="color: #38bdf8; font-weight: 600;">Juan Sebastián Patiño</span>
+          </span>
         </div>
       </div>
 
@@ -819,6 +839,36 @@
             <a href="#section-1" class="btn-secondary">↺ Volver al Inicio</a>
           </div>
         </section>
+
+        <!-- ================================================================
+             PIE DE PÁGINA ACADÉMICO (CRÉDITOS FINALES)
+             ================================================================ -->
+        <footer class="academic-project-footer" style="margin-top: var(--space-3xl); padding: var(--space-xl) var(--space-lg); border-top: 1px solid var(--border-subtle); background: rgba(15, 20, 31, 0.7); border-radius: var(--radius-md); border: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 42px; width: auto; object-fit: contain;">
+            <div>
+              <div style="font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: #ffffff;">ExpoDB Básico &bull; Ingeniería de Sistemas</div>
+              <div style="font-size: 0.78rem; color: #94a3b8;">Plataforma Educativa de Sentencias SELECT en Oracle SQL</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.4rem;">👤</span>
+              <div>
+                <span style="font-size: 0.7rem; color: var(--neon-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Presentador</span>
+                <strong style="color: #ffffff; font-size: 0.95rem;">Juan Sebastián Patiño</strong>
+              </div>
+            </div>
+            <div style="height: 36px; width: 1px; background: var(--border-subtle);"></div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.4rem;">🎓</span>
+              <div>
+                <span style="font-size: 0.7rem; color: var(--amber-gold); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; display: block;">Docente</span>
+                <strong style="color: #ffffff; font-size: 0.95rem;">Amílkar Sierra</strong>
+              </div>
+            </div>
+          </div>
+        </footer>
 
       </div>
     </main>
