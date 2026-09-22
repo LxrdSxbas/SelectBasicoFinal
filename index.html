@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpoDB Básico — Plataforma Educativa Oracle SQL (SELECT)</title>
+  <meta name="description" content="Aprende y domina la sentencia SELECT básica en Oracle SQL: WHERE, AND, OR, IN, LIKE, BETWEEN y DISTINCT con simulador interactivo y pipeline lógico animado.">
+
+  <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Hojas de Estilo del Sistema de Diseño (Art. III.1) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/visualizer.css">
+  <link rel="stylesheet" href="css/presentation.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- ====================================================================
+         SIDEBAR DE NAVEGACIÓN PRINCIPAL (ART. IV)
+         ==================================================================== -->
+    <aside class="sidebar" id="sidebarNav" aria-label="Navegación del curso">
+      <div class="sidebar-header">
+        <div class="brand-badge">
+          <img src="img/logosistemas2024.png" alt="Logo Sistemas" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;">
+          <span class="brand-title">ExpoDB Básico</span>
+        </div>
+        <div class="brand-tagline">Plataforma Educativa Oracle SQL &bull; Temario SELECT</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-category">Contenido Temático</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#section-1" class="nav-item-link active" id="navLink-1">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">01</span>
+                <span>SELECT y FROM</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-2" class="nav-item-link" id="navLink-2">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">02</span>
+                <span>DISTINCT</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-3" class="nav-item-link" id="navLink-3">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">03</span>
+                <span>WHERE y Comparación</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-4" class="nav-item-link" id="navLink-4">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">04</span>
+                <span>AND / OR</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-5" class="nav-item-link" id="navLink-5">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">05</span>
+                <span>BETWEEN</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-6" class="nav-item-link" id="navLink-6">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">06</span>
+                <span>IN</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-7" class="nav-item-link" id="navLink-7">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">07</span>
+                <span>LIKE</span>
+              </div>
+              <span class="nav-status-icon">✓</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-category">Práctica y Evaluación</div>
+        <ul class="nav-list">
+          <li>
+            <a href="#section-8" class="nav-item-link" id="navLink-8">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">08</span>
+                <span>Playground Libre</span>
+              </div>
+              <span class="badge badge-oracle" style="font-size: 0.65rem; padding: 2px 6px;">F9</span>
+            </a>
+          </li>
+          <li>
+            <a href="#section-9" class="nav-item-link" id="navLink-9">
+              <div class="nav-label-wrapper">
+                <span class="nav-index">09</span>
+                <span>Quiz Final</span>
+              </div>
+              <span class="badge badge-cyan" style="font-size: 0.65rem; padding: 2px 6px;">7 Preg</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="Constitucion.md" target="_blank" class="constitution-link">
+          <span>📜</span> Ver Constitución del Proyecto
+        </a>
+        <div style="font-size: 0.7rem; color: #64748b;">
+          ExpoDB v1.0 &bull; Alcance Cerrado Art. II
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         TOPBAR SUPERIOR
+         ==================================================================== -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" id="btnToggleMobileMenu" aria-label="Abrir Menú">☰</button>
+        <div class="topbar-title-group">
+          <span class="topbar-title">ExpoDB Básico</span>
+          <span class="topbar-subtitle">Oracle SQL Simulator</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Indicador de Progreso Global -->
+        <div class="progress-container" title="Progreso de secciones completadas">
+          <span class="progress-text" id="progressLabel">0 / 7 Lecciones</span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+          </div>
+        </div>
+
+        <!-- Botón Ver Esquema de Tablas -->
+        <button class="btn-topbar" id="btnToggleSchema">
+          <span>🗄️</span> Esquema DB
+        </button>
+
+        <!-- Botón Modo Exposición Dual (Concepto + Ejemplo) -->
+        <button class="btn-topbar btn-topbar-expo" id="btnStartLectureMode" title="Iniciar Modo Exposición para dar clase (F5 o Alt+E)" style="background: var(--oracle-red-subtle); color: #ff6b59; border-color: var(--border-accent); font-weight: 600;">
+          <span>🎤</span> Modo Exposición (F5)
+        </button>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         CONTENIDO PRINCIPAL (9 SECCIONES CONSTITUCIONALES)
+         ==================================================================== -->
+    <main class="main-wrapper">
+      <div class="content-container">
+
+        <!-- ================================================================
+             SECCIÓN 1 — SELECT y FROM (Art. IV.1)
+             ================================================================ -->
+        <section class="lesson-section" id="section-1">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 01</span>
+              <span class="badge badge-cyan">Sintaxis Fundamental</span>
+            </div>
+            <h1 class="section-title">Introducción — SELECT y FROM</h1>
+            <p class="section-lead">La estructura atómica de cualquier consulta de datos en Oracle SQL: seleccionar qué columnas visualizar y de qué relación extraerlas.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                Toda consulta de recuperación en <span class="concept-highlight">Oracle SQL</span> inicia conceptualmente con la necesidad de consultar datos almacenados en una tabla. Para lograrlo, se utilizan dos palabras clave obligatorias: <code>SELECT</code>, que indica qué columnas o atributos se desean proyectar en la salida, y <code>FROM</code>, que especifica la tabla física de donde provienen los registros.
+              </p>
+              <p>
+                Si se necesita recuperar todas las columnas de la tabla sin especificarlas una por una, se utiliza el carácter comodín asterisco (<code>*</code>). Sin embargo, en buenas prácticas de ingeniería y optimización, siempre es preferible proyectar únicamente las columnas estrictamente necesarias, separándolas mediante comas.
+              </p>
+              <p>
+                Adicionalmente, Oracle permite asignar nombres temporales a las columnas resultantes mediante la cláusula <code>AS</code> (o simplemente un espacio). A esto se le conoce como <span class="concept-highlight">Alias de Columna</span>, muy útil para hacer que los encabezados del reporte sean más descriptivos y legibles para el usuario final.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Regla de oro:</strong> Aunque escribimos <code>SELECT</code> primero y <code>FROM</code> después, Oracle ejecuta en su motor interno primero la cláusula <code>FROM</code> para cargar la tabla en memoria antes de extraer las columnas solicitadas.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis Oracle SQL -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Proyección con Alias</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-1">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-1" data-viz="viz-section-1">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-1"><code><span class="kw-select">SELECT</span> nombre, apellido, carrera, promedio <span class="kw-as">AS</span> calificacion_actual
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>;</code></pre>
+          </div>
+
+          <!-- 3. Visualización Animada del Pipeline de Ejecución -->
+          <div id="viz-section-1"></div>
+
+          <!-- 4. Ejercicio Práctico en Mini-Consola Embebida -->
+          <div class="mini-console-card" id="console-1">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 1: Tu Primera Proyección de Columnas
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione las columnas <code>nombre</code>, <code>carrera</code> y <code>semestre</code> de la tabla <code>ESTUDIANTES</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, semestre FROM ESTUDIANTES;</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="1">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="1">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, semestre FROM ESTUDIANTES;">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <!-- Navegación a la siguiente lección -->
+          <div class="lesson-footer-nav">
+            <div></div>
+            <a href="#section-2" class="btn-execute">Continuar a Sección 2: DISTINCT ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 2 — DISTINCT (Art. IV.2)
+             ================================================================ -->
+        <section class="lesson-section" id="section-2">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 02</span>
+              <span class="badge badge-cyan">Eliminación de Duplicados</span>
+            </div>
+            <h2 class="section-title">Deduplicación de Tuplas con DISTINCT</h2>
+            <p class="section-lead">Cómo filtrar duplicados para obtener listas únicas de valores o combinaciones de atributos en Oracle SQL.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                En una base de datos relacional, una tabla contiene múltiples filas que frecuentemente comparten datos repetidos en ciertos campos. Por ejemplo, en una universidad con miles de alumnos, el atributo <code>carrera</code> o <code>ciudad</code> tendrá decenas de valores repetidos como "Sistemas" o "Bogotá".
+              </p>
+              <p>
+                La palabra clave <span class="concept-highlight">DISTINCT</span> se coloca inmediatamente después de <code>SELECT</code> para indicarle a Oracle que elimine todas las tuplas idénticas del conjunto resultante, retornando una única fila por cada combinación exclusiva de valores encontrados.
+              </p>
+              <p>
+                Es vital comprender que <code>DISTINCT</code> evalúa la fila proyectada en su totalidad: si proyectas <code>SELECT DISTINCT carrera, ciudad</code>, una fila solo se considerará duplicada si <em>ambos</em> campos (carrera y ciudad) son exactamente iguales a otra fila previa.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Impacto en el Pipeline:</strong> La deduplicación <code>DISTINCT</code> se ejecuta después del filtrado <code>WHERE</code> y antes de ordenar el resultado con <code>ORDER BY</code>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Carreras Universitarias Únicas</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-2">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-2" data-viz="viz-section-2">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-2"><code><span class="kw-select">SELECT</span> <span class="kw-distinct">DISTINCT</span> carrera
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>;</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-2"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-2">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 2: Catálogo de Ciudades Únicas
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Consulta la lista sin duplicados de todas las ciudades de procedencia de los estudiantes de la tabla <code>ESTUDIANTES</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT DISTINCT ciudad FROM ESTUDIANTES;</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="2">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="2">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT DISTINCT ciudad FROM ESTUDIANTES;">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-1" class="btn-secondary">◀ Volver a Sección 1</a>
+            <a href="#section-3" class="btn-execute">Continuar a Sección 3: WHERE ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 3 — WHERE y Operadores de Comparación (Art. IV.3)
+             ================================================================ -->
+        <section class="lesson-section" id="section-3">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 03</span>
+              <span class="badge badge-cyan">Filtro Horizontal Relacional</span>
+            </div>
+            <h2 class="section-title">Filtrado con WHERE y Operadores de Comparación</h2>
+            <p class="section-lead">La cláusula fundamental para discriminar tuplas mediante condiciones booleanas precisas: `=`, `<`, `>`, `<=`, `>=`, `<>` y `!=`.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                En bases de datos no siempre queremos ver todas las filas registradas. La cláusula <span class="concept-highlight">WHERE</span> actúa como un filtro horizontal (equivalente al operador de selección <span class="concept-highlight">&sigma;</span> en álgebra relacional) que evalúa una condición fila por fila. Si la condición resulta en <code>VERDADERO</code> (TRUE), la tupla se conserva; si resulta en <code>FALSO</code>, se descarta inmediatamente.
+              </p>
+              <p>
+                Para formular estas condiciones, Oracle dispone de operadores de comparación fundamentales: igualdad (<code>=</code>), desigualdad estándar (<code>&lt;&gt;</code> o <code>!=</code>), y comparaciones de orden numérico o temporal: menor que (<code>&lt;</code>), mayor que (<code>&gt;</code>), menor o igual (<code>&lt;=</code>) y mayor o igual (<code>&gt;=</code>).
+              </p>
+              <p>
+                Los valores numéricos se escriben directamente sin comillas (por ejemplo, <code>promedio >= 4.0</code>), mientras que las cadenas de texto (literales alfanuméricos) deben encerrarse estrictamente entre <strong>comillas simples</strong> (como <code>carrera = 'Sistemas'</code>).
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Orden Lógico:</strong> La cláusula <code>WHERE</code> se ejecuta inmediatamente después de <code>FROM</code>. Esto significa que Oracle primero descarta las filas no deseadas antes de gastar recursos proyectando columnas o eliminando duplicados.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Estudiantes de Cuadro de Honor</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-3">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-3" data-viz="viz-section-3">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-3"><code><span class="kw-select">SELECT</span> nombre, apellido, carrera, promedio
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
+<span class="kw-where">WHERE</span> promedio &gt;= 4.5;</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-3"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-3">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 3: Filtrar Estudiantes de Medicina
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione todas las columnas de la tabla <code>ESTUDIANTES</code> donde la <code>carrera</code> sea igual a <code>'Medicina'</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT * FROM ESTUDIANTES WHERE carrera = 'Medicina';</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="3">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="3">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT * FROM ESTUDIANTES WHERE carrera = 'Medicina';">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-2" class="btn-secondary">◀ Volver a Sección 2</a>
+            <a href="#section-4" class="btn-execute">Continuar a Sección 4: AND / OR ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 4 — AND / OR (Art. IV.4)
+             ================================================================ -->
+        <section class="lesson-section" id="section-4">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 04</span>
+              <span class="badge badge-cyan">Lógica Booleana Compuesta</span>
+            </div>
+            <h2 class="section-title">Operadores Lógicos: AND / OR y Precedencia</h2>
+            <p class="section-lead">Cómo combinar múltiples condiciones lógicas, controlar la precedencia de operadores y evitar ambigüedades mediante el uso correcto de paréntesis.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                Cuando los requerimientos de consulta exigen validar más de un criterio a la vez, recurrimos a los conectores booleanos <span class="concept-highlight">AND</span> y <span class="concept-highlight">OR</span>. El operador <code>AND</code> exige que <em>ambas</em> condiciones sean verdaderas simultáneamente para que la fila sea seleccionada; mientras que el operador <code>OR</code> aprueba la fila si <em>al menos una</em> de las condiciones se cumple.
+              </p>
+              <p>
+                Un aspecto crítico y fuente habitual de errores es la <span class="concept-highlight">precedencia de operadores</span>. En SQL, el operador <code>AND</code> tiene una jerarquía superior y se evalúa estrictamente antes que el <code>OR</code>, de manera similar a como la multiplicación matemática se resuelve antes que la suma.
+              </p>
+              <p>
+                Para modificar el orden natural de evaluación o garantizar una intención clara y libre de ambigüedades, se deben emplear **paréntesis** <code>(...)</code>. Toda condición encerrada entre paréntesis se evalúa de manera prioritaria como una unidad lógica independiente.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Ejemplo de Precedencia:</strong> <code>carrera = 'Sistemas' OR carrera = 'Medicina' AND promedio >= 4.5</code> se interpreta internamente como "Sistemas (con cualquier promedio) O (Medicina con promedio >= 4.5)". Para exigir el promedio alto a ambas carreras, es indispensable agrupar: <code>(carrera = 'Sistemas' OR carrera = 'Medicina') AND promedio >= 4.5</code>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Agrupamiento con Paréntesis</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-4">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-4" data-viz="viz-section-4">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-4"><code><span class="kw-select">SELECT</span> nombre, carrera, promedio, ciudad
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
+<span class="kw-where">WHERE</span> (carrera = <span class="sql-str">'Sistemas'</span> <span class="kw-or">OR</span> carrera = <span class="sql-str">'Industrial'</span>)
+  <span class="kw-and">AND</span> promedio &gt;= 4.0;</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-4"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-4">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 4: Filtrado Multicriterio con AND
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Encuentra a los estudiantes que pertenezcan a la carrera <code>'Sistemas'</code> <strong>Y</strong> que su <code>promedio</code> sea mayor o igual a <code>4.2</code>. Proyecta <code>nombre</code>, <code>carrera</code> y <code>promedio</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE carrera = 'Sistemas' AND promedio >= 4.2;</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="4">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="4">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE carrera = 'Sistemas' AND promedio >= 4.2;">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-3" class="btn-secondary">◀ Volver a Sección 3</a>
+            <a href="#section-5" class="btn-execute">Continuar a Sección 5: BETWEEN ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 5 — BETWEEN (Art. IV.5)
+             ================================================================ -->
+        <section class="lesson-section" id="section-5">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 05</span>
+              <span class="badge badge-cyan">Rangos Continuos Inclusivos</span>
+            </div>
+            <h2 class="section-title">El Operador BETWEEN: Rangos Cerrados</h2>
+            <p class="section-lead">Cómo evaluar si un atributo se encuentra dentro de un intervalo cerrado de valores numéricos, fechas o texto.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                El operador <span class="concept-highlight">BETWEEN ... AND ...</span> se emplea para comprobar de manera elegante y concisa si el valor de una columna se encuentra dentro de un rango específico determinado por dos límites: un límite inferior y un límite superior.
+              </p>
+              <p>
+                Una propiedad vital y obligatoria de recordar en Oracle SQL es que **BETWEEN es completamente inclusivo**. Es decir, la condición <code>semestre BETWEEN 3 AND 6</code> equivale de manera idéntica y estricta a escribir: <code>semestre >= 3 AND semestre <= 6</code>. Tanto el 3 como el 6 están incluidos en los resultados.
+              </p>
+              <p>
+                Es imperativo que el primer valor especificado sea el menor y el segundo el mayor. Si se escribe erróneamente un orden invertido como <code>semestre BETWEEN 6 AND 3</code>, la condición evaluará siempre a FALSO en Oracle, ya que ningún número puede ser simultáneamente mayor o igual a 6 y menor o igual a 3.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Negación:</strong> También es posible utilizar <code>NOT BETWEEN valor1 AND valor2</code> para encontrar registros que se ubiquen estrictamente por fuera del rango establecido.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Estudiantes de Mitad de Carrera</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-5">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-5" data-viz="viz-section-5">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-5"><code><span class="kw-select">SELECT</span> nombre, apellido, semestre, promedio
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
+<span class="kw-where">WHERE</span> semestre <span class="kw-between">BETWEEN</span> 4 <span class="kw-and">AND</span> 7;</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-5"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-5">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 5: Rango de Notas Académicas
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Escribe una consulta para obtener el <code>nombre</code>, <code>carrera</code> y <code>promedio</code> de los estudiantes cuyo promedio se encuentre en el rango entre <code>3.5</code> y <code>4.5</code> (inclusive).
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE promedio BETWEEN 3.5 AND 4.5;</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="5">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="5">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE promedio BETWEEN 3.5 AND 4.5;">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-4" class="btn-secondary">◀ Volver a Sección 4</a>
+            <a href="#section-6" class="btn-execute">Continuar a Sección 6: IN ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 6 — IN (Art. IV.6)
+             ================================================================ -->
+        <section class="lesson-section" id="section-6">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 06</span>
+              <span class="badge badge-cyan">Conjuntos Discretos de Valores</span>
+            </div>
+            <h2 class="section-title">El Operador IN: Pertenencia a Conjuntos</h2>
+            <p class="section-lead">Cómo evaluar si un valor coincide con cualquiera de los elementos listados dentro de un conjunto delimitado entre paréntesis.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                Cuando necesitamos verificar si el valor de una columna coincide con una de varias opciones posibles, escribir múltiples cláusulas con <code>OR</code> (como <code>ciudad = 'Bogotá' OR ciudad = 'Medellín' OR ciudad = 'Cali'</code>) se vuelve repetitivo, extenso y propenso a equivocaciones sintácticas.
+              </p>
+              <p>
+                Para solucionar esto, Oracle proporciona el operador <span class="concept-highlight">IN</span>. Su sintaxis consiste en indicar el nombre de la columna seguido de la palabra clave <code>IN</code> y una lista de valores separados por comas encerrados entre paréntesis: <code>columna IN (valor1, valor2, valor3)</code>.
+              </p>
+              <p>
+                La consulta evalúa a VERDADERO si el valor de la fila es idéntico a cualquiera de los elementos contenidos en la lista. Además de mejorar drásticamente la legibilidad del código, el optimizador de Oracle suele procesar la lista <code>IN</code> con alta eficiencia indexada.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Equivalencia Lógica:</strong> <code>carrera IN ('Sistemas', 'Medicina')</code> es conceptualmente idéntico a <code>(carrera = 'Sistemas' OR carrera = 'Medicina')</code>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Sedes Principales</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-6">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-6" data-viz="viz-section-6">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-6"><code><span class="kw-select">SELECT</span> nombre, carrera, ciudad
+<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
+<span class="kw-where">WHERE</span> ciudad <span class="kw-in">IN</span> (<span class="sql-str">'Bogotá'</span>, <span class="sql-str">'Medellín'</span>, <span class="sql-str">'Cali'</span>);</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-6"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-6">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 6: Filtro por Lista de Carreras
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Recupera a los estudiantes cuya <code>carrera</code> esté en el conjunto <code>('Industrial', 'Derecho')</code>. Proyecta <code>nombre</code>, <code>carrera</code> y <code>semestre</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, semestre FROM ESTUDIANTES WHERE carrera IN ('Industrial', 'Derecho');</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="6">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="6">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, semestre FROM ESTUDIANTES WHERE carrera IN ('Industrial', 'Derecho');">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-5" class="btn-secondary">◀ Volver a Sección 5</a>
+            <a href="#section-7" class="btn-execute">Continuar a Sección 7: LIKE ▶</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 7 — LIKE (Art. IV.7)
+             ================================================================ -->
+        <section class="lesson-section" id="section-7">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 07</span>
+              <span class="badge badge-cyan">Búsqueda de Patrones Textuales</span>
+            </div>
+            <h2 class="section-title">Búsqueda de Patrones con LIKE (% y _)</h2>
+            <p class="section-lead">Cómo buscar coincidencias parciales de texto utilizando los comodines universales de Oracle SQL: porcentaje y guión bajo.</p>
+          </div>
+
+          <!-- 1. Explicación Corta -->
+          <div class="card-glass">
+            <div class="pedagogical-explanation">
+              <p>
+                En muchas situaciones de negocio o académicas no conocemos el valor textual exacto que buscamos, o deseamos recuperar todas las palabras que comiencen, contengan o finalicen con determinada secuencia de letras. Para este propósito, Oracle dispone del operador de comparación de cadenas <span class="concept-highlight">LIKE</span>.
+              </p>
+              <p>
+                El operador <code>LIKE</code> trabaja en conjunto con dos comodines fundamentales:
+              </p>
+              <ul style="list-style: none; padding-left: 8px; display: flex; flex-direction: column; gap: 8px; margin: 8px 0;">
+                <li>
+                  <code style="color: var(--neon-cyan); font-weight: 700; font-size: 1.1em;">%</code> (Signo de Porcentaje): Representa <strong>cero, uno o múltiples caracteres arbitrarios</strong>. Por ejemplo, <code>'A%'</code> coincide con cualquier texto que empiece con "A" (como "Alejandro", "Ana" o simplemente "A").
+                </li>
+                <li>
+                  <code style="color: var(--amber-gold); font-weight: 700; font-size: 1.1em;">_</code> (Guión Bajo): Representa <strong>exactamente un único carácter</strong>. Por ejemplo, <code>'SIS___'</code> coincide con la palabra SIS seguida de exactamente 3 caracteres más (longitud fija de 6 caracteres, como "SIS101").
+                </li>
+              </ul>
+              <p>
+                Si buscas una subcadena en cualquier posición dentro del texto, rodea el término con porcentajes a ambos lados: <code>LIKE '%Datos%'</code>.
+              </p>
+              <div class="tip-box">
+                <span>💡</span>
+                <div>
+                  <strong>Diferencia clave:</strong> <code>= 'A'</code> exige coincidencia exacta con la letra A sola. <code>LIKE 'A%'</code> exige únicamente que la letra inicial sea A, sin importar cuántos caracteres le sigan.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Ejemplo de Sintaxis -->
+          <div class="sql-example-box">
+            <div class="sql-box-header">
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Cursos del Área de Sistemas</div>
+              <div class="sql-box-actions">
+                <button class="btn-sql-action btn-copy-sql" data-target="sql-code-7">📋 Copiar</button>
+                <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-7" data-viz="viz-section-7">
+                  ▶ Cargar en Visualizador
+                </button>
+              </div>
+            </div>
+            <pre class="sql-code-display" id="sql-code-7"><code><span class="kw-select">SELECT</span> id_curso, nombre_curso, departamento
+<span class="kw-from">FROM</span> <span class="sql-table">CURSOS</span>
+<span class="kw-where">WHERE</span> id_curso <span class="kw-like">LIKE</span> <span class="sql-str">'SIS%'</span>;</code></pre>
+          </div>
+
+          <!-- 3. Pipeline Animado -->
+          <div id="viz-section-7"></div>
+
+          <!-- 4. Ejercicio Práctico -->
+          <div class="mini-console-card" id="console-7">
+            <div class="mini-console-header">
+              <div class="mini-console-title">
+                <span>💻</span> Ejercicio 7: Nombres que Inician con 'B'
+              </div>
+              <span class="badge badge-amber">Reto Interactivo</span>
+            </div>
+            <div class="exercise-prompt">
+              🎯 <strong>Instrucción:</strong> Encuentra a todos los estudiantes cuyo <code>nombre</code> comience con la letra <code>'B'</code>. Selecciona <code>id</code>, <code>nombre</code> y <code>apellido</code>.
+            </div>
+            <div class="sql-editor-wrapper">
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT id, nombre, apellido FROM ESTUDIANTES WHERE nombre LIKE 'B%';</textarea>
+            </div>
+            <div class="mini-console-controls">
+              <div>
+                <button class="btn-execute btn-solve-mini" data-section="7">▶ Ejecutar y Validar</button>
+                <button class="btn-secondary btn-reset-mini" data-section="7">↺ Reiniciar</button>
+              </div>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT id, nombre, apellido FROM ESTUDIANTES WHERE nombre LIKE 'B%';">💡 Ver Pista</button>
+            </div>
+            <div class="feedback-box"></div>
+            <div class="results-table-container"></div>
+          </div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-6" class="btn-secondary">◀ Volver a Sección 6</a>
+            <a href="#section-8" class="btn-execute">Ir a Sección 8: Playground Libre 🚀</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 8 — PLAYGROUND LIBRE (Art. IV.8)
+             ================================================================ -->
+        <section class="lesson-section" id="section-8">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 08</span>
+              <span class="badge badge-cyan">Entorno de Experimentación</span>
+            </div>
+            <h2 class="section-title">Playground Libre — SQL Developer Worksheet</h2>
+            <p class="section-lead">Consola interactiva acumulativa donde puedes escribir y ejecutar libremente cualquier consulta combinando todas las cláusulas aprendidas.</p>
+          </div>
+
+          <div class="card-glass" style="margin-bottom: var(--space-lg);">
+            <p style="font-size: 0.95rem; color: #cbd5e1;">
+              En esta consola puedes redactar cualquier consulta <code>SELECT</code> válida en Oracle SQL sobre las tablas <code>ESTUDIANTES</code>, <code>CURSOS</code> o <code>MATRICULAS</code>. El simulador compilará la consulta, traducirá automáticamente el resultado a notación matemática de <strong>Álgebra Relacional pura (&pi; y &sigma;)</strong> y validará que la sentencia respete el alcance educativo del Artículo II.2 de la Constitución.
+            </p>
+          </div>
+
+          <!-- Contenedor Montado por PlaygroundComponent -->
+          <div id="playground-mount-point"></div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-7" class="btn-secondary">◀ Volver a Sección 7</a>
+            <a href="#section-9" class="btn-execute">Continuar a Sección 9: Quiz Final 🏆</a>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SECCIÓN 9 — QUIZ EVALUATIVO FINAL (Art. IV.9)
+             ================================================================ -->
+        <section class="lesson-section" id="section-9">
+          <div class="section-header">
+            <div class="section-tag">
+              <span class="badge badge-oracle">Sección 09</span>
+              <span class="badge badge-cyan">Evaluación y Certificación</span>
+            </div>
+            <h2 class="section-title">Quiz Final de Validación</h2>
+            <p class="section-lead">Pon a prueba tu dominio de las sentencias SELECT básicas en Oracle SQL a través de 7 preguntas alineadas 1:1 con el temario constitucional.</p>
+          </div>
+
+          <!-- Contenedor Montado por QuizComponent -->
+          <div id="quiz-mount-point"></div>
+
+          <div class="lesson-footer-nav">
+            <a href="#section-8" class="btn-secondary">◀ Volver al Playground</a>
+            <a href="#section-1" class="btn-secondary">↺ Volver al Inicio</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         DRAWER LATERAL DE ESQUEMA DE BASE DE DATOS
+         ==================================================================== -->
+    <aside class="schema-drawer" id="schemaDrawer" aria-label="Explorador de esquema">
+      <div class="schema-drawer-header">
+        <h3 style="font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 8px;">
+          <span>🗄️</span> Esquema UniversityDB
+        </h3>
+        <button class="btn-sql-action" id="btnCloseSchemaDrawer" title="Cerrar panel">✕</button>
+      </div>
+
+      <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: var(--space-md);">
+        Tablas y atributos en memoria disponibles para tus consultas:
+      </div>
+
+      <div id="schemaTablesContainer" style="display: flex; flex-direction: column; gap: var(--space-md);"></div>
+    </aside>
+
+    <!-- Barra flotante de controles en Modo Presentación (Art. VI.4) -->
+    <div class="presentation-bar">
+      <button class="presentation-nav-btn" id="btnPresPrev" title="Diapositiva anterior (←)">◀</button>
+      <span class="presentation-slide-indicator" id="presSlideIndicator">1 / 9</span>
+      <button class="presentation-nav-btn" id="btnPresNext" title="Diapositiva siguiente (→)">▶</button>
+      <button class="btn-secondary" id="btnExitPresentation" style="padding: 4px 10px; font-size: 0.75rem;">Salir (Esc)</button>
+    </div>
+  </div>
+
+  <!-- Contenedor Overlay del Modo Exposición (Concepto + Demostración Interactiva) -->
+  <div class="expo-presentation-overlay" id="expoPresentationOverlay" aria-modal="true" role="dialog"></div>
+
+  <!-- Scripts Principales como Módulos ES6 -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

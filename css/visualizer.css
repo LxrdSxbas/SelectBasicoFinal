@@ -1,0 +1,318 @@
+/* ==========================================================================
+   visualizer.css - Visualizador del Pipeline Lógico de Oracle SQL
+   Orden Lógico Real: FROM -> WHERE -> DISTINCT -> SELECT -> ORDER BY
+   Conforme a la Constitución del Proyecto (Art. III.2 y Art. IV)
+   ========================================================================== */
+
+.pipeline-visualizer-card {
+  background: #090c14;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin: var(--space-xl) 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.pipeline-visualizer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ea1c04, #00e5ff, #f59e0b);
+}
+
+.visualizer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.visualizer-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visualizer-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.visualizer-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.visualizer-badge-order {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+}
+
+/* --- BARRA DE FASES DEL PIPELINE --- */
+.pipeline-stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.pipeline-step-node {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pipeline-step-node:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pipeline-step-node.active {
+  background: rgba(0, 229, 255, 0.1);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 16px var(--neon-cyan-glow);
+}
+
+.pipeline-step-node.active .step-node-name {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pipeline-step-node.completed {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.step-node-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.pipeline-step-node.active .step-node-num {
+  color: var(--neon-cyan);
+}
+
+.step-node-name {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.step-node-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #334155;
+  margin-top: 2px;
+}
+
+.pipeline-step-node.active .step-node-indicator {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 6px var(--neon-cyan);
+}
+
+.pipeline-step-node.completed .step-node-indicator {
+  background: var(--emerald-green);
+}
+
+/* --- DETALLES DE LA FASE ACTIVA --- */
+.step-details-panel {
+  background: #04060b;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.step-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.step-details-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-stats-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  border: 1px solid var(--border-subtle);
+}
+
+.stat-pill strong {
+  color: #ffffff;
+}
+
+.step-details-desc {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* --- TABLA VIVA DEL PIPELINE --- */
+.pipeline-table-stage {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: #06080d;
+}
+
+.pipeline-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.pipeline-table th {
+  position: sticky;
+  top: 0;
+  background: #0f1420;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: #94a3b8;
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.pipeline-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  color: #e2e8f0;
+  transition: background 250ms ease, opacity 250ms ease;
+}
+
+.pipeline-table tr.state-dropped td {
+  opacity: 0.2;
+  text-decoration: line-through;
+  background: rgba(234, 28, 4, 0.06);
+}
+
+.pipeline-table tr.state-passed td {
+  background: rgba(16, 185, 129, 0.06);
+}
+
+.pipeline-table tr.state-active td {
+  background: rgba(0, 229, 255, 0.08);
+}
+
+/* --- CONTROLES DEL VISUALIZADOR --- */
+.visualizer-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.playback-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-viz-control {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: #cbd5e1;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-viz-control:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: var(--border-glass);
+}
+
+.btn-viz-control:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-viz-play {
+  background: var(--neon-cyan-subtle);
+  color: var(--neon-cyan);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.btn-viz-play:hover:not(:disabled) {
+  background: rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pipeline-stepper {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .pipeline-step-node {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px 12px;
+  }
+}
