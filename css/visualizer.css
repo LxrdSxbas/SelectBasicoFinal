@@ -2,15 +2,16 @@
    visualizer.css - Visualizador del Pipeline Lógico de Oracle SQL
    Orden Lógico Real: FROM -> WHERE -> DISTINCT -> SELECT -> ORDER BY
    Conforme a la Constitución del Proyecto (Art. III.2 y Art. IV)
+   Fondo Claro + Bordes Verdes Institucionales
    ========================================================================== */
 
 .pipeline-visualizer-card {
-  background: #090c14;
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   margin: var(--space-xl) 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 24px rgba(0, 90, 43, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -21,8 +22,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ea1c04, #00e5ff, #f59e0b);
+  height: 4px;
+  background: linear-gradient(90deg, #005a2b, #00a854, #69f0ae);
 }
 
 .visualizer-header {
@@ -44,8 +45,9 @@
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
-  background: rgba(0, 229, 255, 0.12);
-  color: var(--neon-cyan);
+  background: #eaf5ee;
+  color: var(--upc-green);
+  border: 1.5px solid var(--upc-green);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,19 +55,20 @@
 }
 
 .visualizer-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #005a2b;
 }
 
 .visualizer-badge-order {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 3px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #005a2b;
+  background: #f0fdf4;
+  padding: 4px 10px;
   border-radius: var(--radius-xs);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--upc-green);
 }
 
 /* --- BARRA DE FASES DEL PIPELINE --- */
@@ -78,8 +81,8 @@
 }
 
 .pipeline-step-node {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-sm);
   padding: 10px 8px;
   text-align: center;
@@ -93,63 +96,65 @@
 }
 
 .pipeline-step-node:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #f0fdf4;
+  border-color: var(--upc-green-bright);
 }
 
 .pipeline-step-node.active {
-  background: rgba(0, 229, 255, 0.1);
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 16px var(--neon-cyan-glow);
+  background: #eaf5ee;
+  border-color: var(--upc-green);
+  box-shadow: 0 0 12px var(--upc-green-glow);
 }
 
 .pipeline-step-node.active .step-node-name {
-  color: #ffffff;
-  font-weight: 700;
+  color: #005a2b;
+  font-weight: 800;
 }
 
 .pipeline-step-node.completed {
-  border-color: rgba(16, 185, 129, 0.4);
+  border-color: var(--upc-green);
+  background: #f0fdf4;
 }
 
 .step-node-num {
   font-family: var(--font-mono);
   font-size: 0.7rem;
+  font-weight: 700;
   color: var(--text-muted);
 }
 
 .pipeline-step-node.active .step-node-num {
-  color: var(--neon-cyan);
+  color: var(--upc-green);
 }
 
 .step-node-name {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #1e3a2f;
 }
 
 .step-node-indicator {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: #334155;
+  background: #cbd5e1;
   margin-top: 2px;
 }
 
 .pipeline-step-node.active .step-node-indicator {
-  background: var(--neon-cyan);
-  box-shadow: 0 0 6px var(--neon-cyan);
+  background: var(--upc-green);
+  box-shadow: 0 0 6px var(--upc-green);
 }
 
 .pipeline-step-node.completed .step-node-indicator {
-  background: var(--emerald-green);
+  background: var(--upc-green-bright);
 }
 
 /* --- DETALLES DE LA FASE ACTIVA --- */
 .step-details-panel {
-  background: #04060b;
-  border: 1px solid var(--border-subtle);
+  background: #f0fdf4;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-lg);
@@ -167,9 +172,9 @@
 }
 
 .step-details-title {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--neon-cyan);
+  color: #005a2b;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -186,18 +191,19 @@
   font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: var(--radius-xs);
-  background: rgba(255, 255, 255, 0.05);
-  color: #94a3b8;
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  color: #005a2b;
+  border: 1.5px solid var(--upc-green);
+  font-weight: 600;
 }
 
 .stat-pill strong {
-  color: #ffffff;
+  color: #005a2b;
 }
 
 .step-details-desc {
-  font-size: 0.85rem;
-  color: #cbd5e1;
+  font-size: 0.88rem;
+  color: #1e3a2f;
   line-height: 1.5;
 }
 
@@ -205,51 +211,54 @@
 .pipeline-table-stage {
   max-height: 320px;
   overflow-y: auto;
-  border: 1px solid var(--border-subtle);
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-sm);
-  background: #06080d;
+  background: #ffffff;
 }
 
 .pipeline-table {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .pipeline-table th {
   position: sticky;
   top: 0;
-  background: #0f1420;
+  background: #eaf5ee;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--border-subtle);
-  color: #94a3b8;
+  border-bottom: 2px solid var(--upc-green);
+  color: #005a2b;
   text-align: left;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   z-index: 2;
 }
 
 .pipeline-table td {
-  padding: 6px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-  color: #e2e8f0;
+  padding: 7px 12px;
+  border-bottom: 1px solid #d1fae5;
+  color: #0a1c13;
   transition: background 250ms ease, opacity 250ms ease;
 }
 
 .pipeline-table tr.state-dropped td {
-  opacity: 0.2;
+  opacity: 0.3;
   text-decoration: line-through;
-  background: rgba(234, 28, 4, 0.06);
+  background: rgba(220, 38, 38, 0.06);
 }
 
 .pipeline-table tr.state-passed td {
-  background: rgba(16, 185, 129, 0.06);
+  background: rgba(0, 135, 68, 0.1);
+  font-weight: 600;
 }
 
 .pipeline-table tr.state-active td {
-  background: rgba(0, 229, 255, 0.08);
+  background: rgba(0, 135, 68, 0.18);
+  font-weight: 700;
 }
 
 /* --- CONTROLES DEL VISUALIZADOR --- */
@@ -259,20 +268,21 @@
   justify-content: space-between;
   margin-top: var(--space-md);
   padding-top: var(--space-md);
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1.5px solid rgba(0, 135, 68, 0.25);
 }
 
 .playback-btn-group {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-viz-control {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: #cbd5e1;
+  background: #ffffff;
+  border: 1.5px solid var(--upc-green);
+  color: #005a2b;
   font-size: 0.8rem;
+  font-weight: 600;
   padding: 6px 12px;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -283,9 +293,8 @@
 }
 
 .btn-viz-control:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  border-color: var(--border-glass);
+  background: #eaf5ee;
+  border-color: var(--upc-green-bright);
 }
 
 .btn-viz-control:disabled {
@@ -294,14 +303,15 @@
 }
 
 .btn-viz-play {
-  background: var(--neon-cyan-subtle);
-  color: var(--neon-cyan);
-  border-color: rgba(0, 229, 255, 0.3);
+  background: var(--upc-green);
+  color: #ffffff;
+  border-color: var(--upc-green-dark);
+  font-weight: 700;
 }
 
 .btn-viz-play:hover:not(:disabled) {
-  background: rgba(0, 229, 255, 0.25);
-  box-shadow: 0 0 10px var(--neon-cyan-glow);
+  background: var(--upc-green-bright);
+  box-shadow: 0 0 10px var(--upc-green-glow);
 }
 
 /* Responsive */

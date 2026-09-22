@@ -1,16 +1,15 @@
 /* ==========================================================================
-   components.css - Componentes UI ExpoDB Básico (Cyber-Académico)
+   components.css - Componentes UI ExpoDB Básico (Institucional UPC Sistemas)
+   Fondo Claro + Bordes de Divs en Verde Institucional
    ========================================================================== */
 
-/* --- TARJETAS GLASSMORPHISM --- */
+/* --- TARJETAS PRINCIPALES (DIVS CON BORDE VERDE Y FONDO CLARO) --- */
 .card-glass {
-  background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--border-glass);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 18px rgba(0, 90, 43, 0.08);
   position: relative;
   overflow: hidden;
   margin-bottom: var(--space-xl);
@@ -18,7 +17,8 @@
 }
 
 .card-glass:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--upc-green-bright);
+  box-shadow: 0 8px 26px rgba(0, 90, 43, 0.14);
 }
 
 .card-glass::before {
@@ -27,14 +27,14 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(234, 28, 4, 0.4), transparent);
+  height: 4px;
+  background: linear-gradient(90deg, #005a2b, #00a854, #69f0ae);
 }
 
 /* --- BLOQUE DE EXPLICACIÓN (PLANTILLA PARTE 1) --- */
 .pedagogical-explanation {
   font-size: 1rem;
-  color: #cbd5e1;
+  color: #1e3a2f;
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -42,40 +42,43 @@
 
 .pedagogical-explanation p {
   line-height: 1.7;
+  color: #1e3a2f;
 }
 
 .concept-highlight {
-  color: #ffffff;
-  font-weight: 600;
-  border-bottom: 1px dashed var(--neon-cyan);
+  color: #005a2b;
+  font-weight: 700;
+  border-bottom: 2px solid var(--upc-green);
 }
 
 .tip-box {
-  background: rgba(0, 229, 255, 0.06);
-  border-left: 3px solid var(--neon-cyan);
+  background: #f0fdf4;
+  border: 2px solid var(--upc-green);
+  border-left: 5px solid var(--upc-green);
   padding: var(--space-md) var(--space-lg);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.9rem;
-  color: #bae6fd;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  color: #064e3b;
   display: flex;
   gap: var(--space-sm);
   align-items: flex-start;
-  margin: var(--space-xs) 0;
+  margin: var(--space-sm) 0;
 }
 
 /* --- BLOQUE DE CÓDIGO ORACLE SQL (PLANTILLA PARTE 2) --- */
 .sql-example-box {
-  background: #080b11;
-  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   margin: var(--space-lg) 0;
   overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 90, 43, 0.08);
 }
 
 .sql-box-header {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 8px var(--space-md);
-  border-bottom: 1px solid var(--border-subtle);
+  background: #eaf5ee;
+  padding: 10px var(--space-md);
+  border-bottom: 2px solid var(--upc-green);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,8 +86,9 @@
 
 .sql-box-title {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #005a2b;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -93,14 +97,15 @@
 .sql-box-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-sql-action {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  background: #ffffff;
+  border: 1.5px solid var(--upc-green);
+  color: #005a2b;
   font-size: 0.75rem;
+  font-weight: 600;
   padding: 4px 10px;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -111,20 +116,20 @@
 }
 
 .btn-sql-action:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary);
-  border-color: var(--border-glass);
+  background: #eaf5ee;
+  border-color: var(--upc-green-bright);
 }
 
 .btn-sql-run {
-  background: var(--oracle-red);
+  background: var(--upc-green);
   color: white;
-  border-color: var(--oracle-red);
+  border-color: var(--upc-green);
+  font-weight: 700;
 }
 
 .btn-sql-run:hover {
-  background: var(--oracle-red-hover);
-  box-shadow: 0 0 12px var(--oracle-red-glow);
+  background: var(--upc-green-bright);
+  box-shadow: 0 0 12px var(--upc-green-glow);
 }
 
 .sql-code-display {
@@ -132,13 +137,14 @@
   font-family: var(--font-mono);
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #f1f5f9;
+  background: #0d1520;
+  color: #f8fafc;
   overflow-x: auto;
 }
 
 /* Resaltado de sintaxis SQL */
 .kw-select, .kw-from, .kw-where, .kw-distinct, .kw-order, .kw-by, .kw-as {
-  color: #ff5247;
+  color: #4ade80;
   font-weight: 700;
 }
 
@@ -148,15 +154,16 @@
 }
 
 .sql-str {
-  color: #34d399;
+  color: #38bdf8;
 }
 
 .sql-num {
-  color: #38bdf8;
+  color: #f472b6;
 }
 
 .sql-table {
   color: #c084fc;
+  font-weight: 600;
 }
 
 .sql-col {
@@ -164,16 +171,17 @@
 }
 
 .sql-op {
-  color: #f43f5e;
+  color: #fb7185;
 }
 
-/* --- TABLA DE RESULTADOS DE BASE DE DATOS --- */
+/* --- TABLA DE RESULTADOS DE BASE DE DATOS (PLANTILLA PARTE 3) --- */
 .results-table-container {
   overflow-x: auto;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  background: #07090e;
+  border: 2px solid var(--upc-green);
+  background: #ffffff;
   margin: var(--space-md) 0;
+  box-shadow: 0 2px 10px rgba(0, 90, 43, 0.06);
 }
 
 .db-table {
@@ -184,37 +192,39 @@
 }
 
 .db-table th {
-  background: #111724;
-  color: #94a3b8;
+  background: #eaf5ee;
+  color: #005a2b;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 10px 14px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--upc-green);
+  font-weight: 700;
   white-space: nowrap;
 }
 
 .db-table td {
-  padding: 8px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  color: #e2e8f0;
+  padding: 9px 14px;
+  border-bottom: 1px solid #d1fae5;
+  color: #0a1c13;
   font-family: var(--font-mono);
   white-space: nowrap;
 }
 
 .db-table tr:hover td {
-  background: rgba(255, 255, 255, 0.03);
+  background: #f0fdf4;
 }
 
 .db-table tr.filtered-out td {
-  opacity: 0.25;
+  opacity: 0.35;
   text-decoration: line-through;
-  background: rgba(234, 28, 4, 0.05);
+  background: rgba(220, 38, 38, 0.05);
 }
 
 .db-table tr.matched-row td {
-  background: rgba(16, 185, 129, 0.08);
+  background: rgba(0, 135, 68, 0.12);
+  font-weight: 600;
 }
 
 .row-num-col {
@@ -222,16 +232,18 @@
   width: 36px;
   text-align: center;
   font-size: 0.75rem;
+  background: #f8fafc;
+  border-right: 1px solid #d1fae5;
 }
 
 /* --- MINI-CONSOLA EMBEBIDA (PLANTILLA PARTE 4) --- */
 .mini-console-card {
-  background: #0a0e17;
-  border: 1px solid rgba(234, 28, 4, 0.3);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   margin-top: var(--space-xl);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 90, 43, 0.1);
 }
 
 .mini-console-header {
@@ -245,26 +257,27 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #005a2b;
 }
 
 .exercise-prompt {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-left: 3px solid var(--amber-gold);
+  background: #f0fdf4;
+  border: 1.5px solid var(--upc-green);
+  border-left: 4px solid var(--upc-green);
   border-radius: var(--radius-xs);
   padding: var(--space-sm) var(--space-md);
   margin-bottom: var(--space-md);
-  font-size: 0.9rem;
-  color: #f1f5f9;
+  font-size: 0.92rem;
+  color: #064e3b;
+  font-weight: 500;
 }
 
 .sql-editor-wrapper {
   position: relative;
-  background: #05070a;
-  border: 1px solid var(--border-glass);
+  background: #0d1520;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-sm);
   overflow: hidden;
   margin-bottom: var(--space-sm);
@@ -272,7 +285,7 @@
 
 .sql-editor-textarea {
   width: 100%;
-  min-height: 80px;
+  min-height: 85px;
   background: transparent;
   color: #38bdf8;
   font-family: var(--font-mono);
@@ -285,7 +298,7 @@
 }
 
 .sql-editor-textarea:focus {
-  box-shadow: inset 0 0 0 1px var(--border-focus);
+  box-shadow: inset 0 0 0 2px var(--upc-green-bright);
 }
 
 .mini-console-controls {
@@ -297,32 +310,33 @@
 }
 
 .btn-execute {
-  background: linear-gradient(135deg, #00a854, #006837);
+  background: linear-gradient(135deg, #008744, #005a2b);
   color: white;
-  border: none;
-  font-weight: 600;
+  border: 1.5px solid var(--upc-green-dark);
+  font-weight: 700;
   font-size: 0.85rem;
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 2px 10px var(--oracle-red-glow);
+  box-shadow: 0 3px 12px var(--upc-green-glow);
   transition: all var(--transition-fast);
 }
 
 .btn-execute:hover {
-  background: linear-gradient(135deg, #00c853, #00a854);
-  box-shadow: 0 4px 16px var(--oracle-red-glow);
+  background: linear-gradient(135deg, #00a854, #008744);
+  box-shadow: 0 4px 18px var(--upc-green-glow);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 0.8rem;
+  background: #ffffff;
+  border: 1.5px solid var(--upc-green);
+  color: #005a2b;
+  font-size: 0.82rem;
+  font-weight: 600;
   padding: 7px 14px;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -330,18 +344,19 @@
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+  background: #eaf5ee;
+  border-color: var(--upc-green-bright);
 }
 
 /* Feedback Box (Acierto / Error) */
 .feedback-box {
   border-radius: var(--radius-sm);
   padding: var(--space-sm) var(--space-md);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   display: none;
   margin-top: var(--space-sm);
   animation: fadeIn 200ms ease;
+  border: 2px solid transparent;
 }
 
 .feedback-box.show {
@@ -351,48 +366,53 @@
 }
 
 .feedback-success {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #065f46;
+  font-weight: 600;
 }
 
 .feedback-error {
-  background: rgba(234, 28, 4, 0.1);
-  border: 1px solid rgba(234, 28, 4, 0.3);
-  color: #fca5a5;
+  background: #fef2f2;
+  border-color: #dc2626;
+  color: #991b1b;
+  font-weight: 600;
 }
 
 .feedback-restricted {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #fcd34d;
+  background: #fffbeb;
+  border-color: #d97706;
+  color: #92400e;
+  font-weight: 600;
 }
 
 /* --- ÁLGEBRA RELACIONAL BOX (π y σ) --- */
 .relational-algebra-box {
-  background: #090e18;
-  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
   margin: var(--space-md) 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  box-shadow: 0 4px 14px rgba(0, 90, 43, 0.08);
 }
 
 .algebra-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #c084fc;
+  color: #005a2b;
 }
 
 .algebra-display {
-  background: #04060a;
+  background: #0d1520;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-sm);
   padding: 12px 18px;
   font-family: var(--font-mono);
@@ -410,11 +430,11 @@
 }
 
 .algebra-pi {
-  color: var(--neon-cyan);
+  color: #38bdf8;
 }
 
 .algebra-sigma {
-  color: var(--amber-gold);
+  color: #fbbf24;
 }
 
 .algebra-sub {
@@ -431,7 +451,7 @@
 }
 
 .algebra-table {
-  color: #c084fc;
+  color: #4ade80;
   font-weight: 700;
 }
 
@@ -458,15 +478,15 @@
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: var(--space-lg);
-  background: #070a10;
-  border: 1px solid var(--border-glass);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 6px 24px rgba(0, 90, 43, 0.1);
 }
 
 .playground-sidebar {
-  border-right: 1px solid var(--border-subtle);
+  border-right: 2px solid rgba(0, 135, 68, 0.25);
   padding-right: var(--space-md);
   display: flex;
   flex-direction: column;
@@ -486,10 +506,11 @@
 }
 
 .query-chip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  color: #94a3b8;
+  background: #f0fdf4;
+  border: 1.5px solid var(--upc-green);
+  color: #005a2b;
   font-size: 0.75rem;
+  font-weight: 600;
   padding: 4px 8px;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -497,9 +518,8 @@
 }
 
 .query-chip:hover {
-  background: var(--oracle-red-subtle);
-  color: #ff604d;
-  border-color: var(--border-accent);
+  background: var(--upc-green);
+  color: #ffffff;
 }
 
 /* --- QUIZ EVALUATIVO (SECCIÓN 9) --- */
@@ -513,29 +533,33 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-surface);
+  background: #ffffff;
   padding: 10px 18px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  font-size: 0.85rem;
+  border: 2px solid var(--upc-green);
+  font-size: 0.88rem;
+  color: #005a2b;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 90, 43, 0.06);
 }
 
 .quiz-card {
-  background: #0b0f19;
-  border: 1px solid var(--border-glass);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
+  box-shadow: 0 6px 20px rgba(0, 90, 43, 0.08);
 }
 
 .quiz-question-title {
   font-size: 1.15rem;
-  color: #ffffff;
+  color: #005a2b;
   margin-bottom: var(--space-md);
 }
 
 .quiz-code-snippet {
-  background: #05070a;
-  border: 1px solid var(--border-subtle);
+  background: #0d1520;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-sm);
   padding: var(--space-md);
   font-family: var(--font-mono);
@@ -551,13 +575,14 @@
 }
 
 .quiz-option-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
+  background: #f8fafc;
+  border: 1.5px solid rgba(0, 135, 68, 0.35);
   border-radius: var(--radius-sm);
   padding: 12px 16px;
-  color: #cbd5e1;
+  color: #1e3a2f;
   text-align: left;
   font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -566,9 +591,9 @@
 }
 
 .quiz-option-btn:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: #f0fdf4;
+  border-color: var(--upc-green);
+  color: #005a2b;
 }
 
 .quiz-option-letter {
@@ -578,52 +603,57 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: #eaf5ee;
+  border: 1px solid var(--upc-green);
   font-weight: 700;
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: #005a2b;
 }
 
 .quiz-option-btn.selected-correct {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: var(--emerald-green);
-  color: #6ee7b7;
+  background: #ecfdf5;
+  border: 2px solid #059669;
+  color: #065f46;
+  font-weight: 700;
 }
 
 .quiz-option-btn.selected-wrong {
-  background: rgba(234, 28, 4, 0.15);
-  border-color: var(--oracle-red);
-  color: #fca5a5;
+  background: #fef2f2;
+  border: 2px solid #dc2626;
+  color: #991b1b;
+  font-weight: 700;
 }
 
 .quiz-feedback-explanation {
   margin-top: var(--space-md);
   padding: var(--space-md);
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   line-height: 1.5;
+  border: 2px solid transparent;
 }
 
 .quiz-cert-card {
   text-align: center;
   padding: var(--space-2xl) var(--space-xl);
-  background: linear-gradient(180deg, #0d2116 0%, #061009 100%);
-  border: 1px solid var(--border-accent);
+  background: #ffffff;
+  border: 3px solid var(--upc-green);
   border-radius: var(--radius-lg);
-  box-shadow: 0 0 30px var(--oracle-red-glow);
+  box-shadow: 0 0 30px rgba(0, 135, 68, 0.15);
 }
 
 .cert-badge-icon {
   width: 64px;
   height: 64px;
   margin: 0 auto var(--space-md);
-  background: var(--oracle-red);
+  background: var(--upc-green);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  box-shadow: 0 0 20px var(--oracle-red-glow);
+  color: white;
+  box-shadow: 0 0 20px var(--upc-green-glow);
 }
 
 /* Animaciones */
@@ -638,7 +668,7 @@
   }
   .playground-sidebar {
     border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 2px solid rgba(0, 135, 68, 0.25);
     padding-bottom: var(--space-md);
   }
 }

@@ -11,7 +11,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
   position: relative;
 }
 
-/* Fondo decorativo con rejilla cyber suave y radial gradients */
+/* Fondo decorativo con rejilla institucional suave y radial gradients */
 body::before {
   content: '';
   position: fixed;
@@ -35,10 +35,10 @@ body::before {
   width: 100vw;
   height: 100vh;
   background-image:
-    radial-gradient(circle at 15% 15%, rgba(0, 200, 83, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(0, 104, 55, 0.1) 0%, transparent 45%),
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    radial-gradient(circle at 15% 15%, rgba(0, 135, 68, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(0, 90, 43, 0.06) 0%, transparent 45%),
+    linear-gradient(rgba(0, 135, 68, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 135, 68, 0.05) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
   pointer-events: none;
   z-index: -1;
@@ -47,7 +47,7 @@ body::before {
 /* Tipografía de encabezados */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--text-primary);
+  color: var(--upc-green-dark);
   font-weight: 700;
   line-height: 1.25;
 }
@@ -55,25 +55,29 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2.35rem;
   letter-spacing: -0.025em;
+  color: #005a2b;
 }
 
 h2 {
   font-size: 1.75rem;
   letter-spacing: -0.02em;
+  color: #005a2b;
 }
 
 h3 {
   font-size: 1.3rem;
   letter-spacing: -0.015em;
+  color: #006837;
 }
 
 h4 {
   font-size: 1.1rem;
+  color: #0a1c13;
 }
 
 p {
   margin-bottom: 1rem;
-  color: #cbd5e1;
+  color: #1e3a2f;
 }
 
 p:last-child {
@@ -81,13 +85,13 @@ p:last-child {
 }
 
 a {
-  color: var(--neon-cyan);
+  color: var(--upc-green);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: #70f0ff;
+  color: var(--upc-green-dark);
   text-decoration: underline;
 }
 
@@ -98,11 +102,12 @@ code, pre, kbd {
 }
 
 :not(pre) > code {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
+  background: #eaf5ee;
+  border: 1.5px solid rgba(0, 135, 68, 0.3);
   padding: 0.15em 0.45em;
   border-radius: var(--radius-xs);
-  color: #38bdf8;
+  color: #005a2b;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -113,23 +118,23 @@ code, pre, kbd {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-abyss);
+  background: #eaf5ee;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #a7f3d0;
   border-radius: var(--radius-full);
-  border: 2px solid var(--bg-abyss);
+  border: 2px solid #eaf5ee;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #008744;
 }
 
 /* Selección de texto */
 ::selection {
-  background: rgba(234, 28, 4, 0.35);
-  color: #ffffff;
+  background: rgba(0, 135, 68, 0.25);
+  color: #005a2b;
 }
 
 /* Utilidades generales */
@@ -158,25 +163,25 @@ code, pre, kbd {
 }
 
 .badge-oracle {
-  background: var(--oracle-red-subtle);
-  color: #69f0ae;
-  border: 1px solid var(--border-accent);
+  background: #eaf5ee;
+  color: #005a2b;
+  border: 1.5px solid var(--upc-green);
 }
 
 .badge-cyan {
-  background: var(--neon-cyan-subtle);
-  color: var(--neon-cyan);
-  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1.5px solid #0284c7;
 }
 
 .badge-amber {
-  background: var(--amber-subtle);
-  color: var(--amber-gold);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  background: #fef3c7;
+  color: #b45309;
+  border: 1.5px solid #d97706;
 }
 
 .badge-emerald {
-  background: var(--emerald-subtle);
-  color: var(--emerald-green);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: #ecfdf5;
+  color: #047857;
+  border: 1.5px solid #059669;
 }

@@ -1,6 +1,7 @@
 /* ==========================================================================
    presentation.css - Modo Exposición Dual (Concepto + Demostración Interactiva)
    Conforme a la Constitución del Proyecto (Art. IV y Art. VI.4)
+   Fondo Claro + Bordes de Divs Verdes Institucionales UPC
    ========================================================================== */
 
 /* Bloquear scroll del body al estar en exposición */
@@ -15,7 +16,7 @@ body.expo-presentation-active {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #06080e;
+  background: #f4fbf7;
   z-index: 1000;
   display: none;
   overflow: hidden;
@@ -31,21 +32,21 @@ body.expo-presentation-active {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  background-color: #f4fbf7;
   background-image:
-    radial-gradient(circle at 10% 20%, rgba(0, 200, 83, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(0, 104, 55, 0.1) 0%, transparent 45%),
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    radial-gradient(circle at 10% 20%, rgba(0, 135, 68, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 90, 43, 0.06) 0%, transparent 45%),
+    linear-gradient(rgba(0, 135, 68, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 135, 68, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 }
 
 /* --- TOPBAR DE LA EXPOSICIÓN --- */
 .expo-pres-topbar {
   height: 64px;
-  background: rgba(9, 12, 18, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border-bottom: 2px solid var(--upc-green);
+  box-shadow: 0 2px 10px rgba(0, 90, 43, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,17 +63,16 @@ body.expo-presentation-active {
 /* Segmented Control Dual: Concepto vs Ejemplo */
 .expo-phase-switch {
   display: flex;
-  background: #030508;
+  background: #f0fdf4;
   padding: 4px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-glass);
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  border: 1.5px solid var(--upc-green);
 }
 
 .btn-phase {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #005a2b;
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-weight: 600;
@@ -86,14 +86,14 @@ body.expo-presentation-active {
 }
 
 .btn-phase:hover {
-  color: #ffffff;
+  color: var(--upc-green-dark);
 }
 
 .btn-phase.active {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(0, 229, 255, 0.08));
-  color: var(--neon-cyan);
-  border: 1px solid rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 14px var(--neon-cyan-glow);
+  background: var(--upc-green);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--upc-green-glow);
 }
 
 .expo-pres-actions {
@@ -120,25 +120,22 @@ body.expo-presentation-active {
 }
 
 .slide-concept-header {
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid rgba(0, 135, 68, 0.2);
   padding-bottom: 16px;
 }
 
 .slide-big-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #005a2b;
   letter-spacing: -0.025em;
   margin-top: 6px;
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .slide-subtitle {
   font-size: 1.15rem;
-  color: var(--neon-cyan);
-  font-weight: 500;
+  color: var(--upc-green);
+  font-weight: 600;
 }
 
 /* 4 Tarjetas visuales de ideas clave */
@@ -149,11 +146,11 @@ body.expo-presentation-active {
 }
 
 .slide-concept-card {
-  background: rgba(15, 20, 31, 0.85);
-  border: 1px solid var(--border-glass);
+  background: #ffffff;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: 20px 24px;
-  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 16px rgba(0, 90, 43, 0.08);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
   position: relative;
   overflow: hidden;
@@ -161,7 +158,7 @@ body.expo-presentation-active {
 
 .slide-concept-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--upc-green-bright);
 }
 
 .slide-concept-card::before {
@@ -169,9 +166,9 @@ body.expo-presentation-active {
   position: absolute;
   top: 0;
   left: 0;
-  width: 4px;
+  width: 5px;
   height: 100%;
-  background: linear-gradient(180deg, var(--oracle-red), var(--neon-cyan));
+  background: linear-gradient(180deg, #005a2b, #00a854);
 }
 
 .slide-card-icon {
@@ -182,13 +179,13 @@ body.expo-presentation-active {
 .slide-card-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #005a2b;
   margin-bottom: 6px;
 }
 
 .slide-card-text {
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: #1e3a2f;
   line-height: 1.6;
 }
 
@@ -201,8 +198,8 @@ body.expo-presentation-active {
 }
 
 .slide-syntax-box {
-  background: #04060a;
-  border: 1px solid var(--border-subtle);
+  background: #0d1520;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   display: flex;
@@ -212,10 +209,11 @@ body.expo-presentation-active {
 .slide-syntax-label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: #4ade80;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .slide-syntax-code {
@@ -228,8 +226,8 @@ body.expo-presentation-active {
 }
 
 .slide-rule-box {
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: #f0fdf4;
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
   padding: 18px 22px;
   display: flex;
@@ -238,16 +236,17 @@ body.expo-presentation-active {
 }
 
 .slide-rule-title {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--amber-gold);
+  color: #005a2b;
   margin-bottom: 6px;
 }
 
 .slide-rule-text {
   font-size: 0.95rem;
-  color: #fef08a;
+  color: #064e3b;
   line-height: 1.55;
+  font-weight: 500;
 }
 
 /* --- FASE 2: DEMOSTRACIÓN INTERACTIVA EN VIVO --- */
@@ -258,16 +257,16 @@ body.expo-presentation-active {
 }
 
 .slide-example-header {
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid rgba(0, 135, 68, 0.2);
   padding-bottom: 10px;
 }
 
 .slide-demo-editor-card {
-  border: 1px solid var(--border-glass);
+  border: 2px solid var(--upc-green);
   border-radius: var(--radius-md);
-  background: #080b11;
+  background: #0d1520;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 14px rgba(0, 90, 43, 0.1);
 }
 
 .slide-demo-editor-card .sql-editor-textarea {
@@ -283,10 +282,9 @@ body.expo-presentation-active {
   left: 0;
   right: 0;
   height: 72px;
-  background: rgba(8, 11, 18, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--border-glass);
+  background: #ffffff;
+  border-top: 2px solid var(--upc-green);
+  box-shadow: 0 -4px 16px rgba(0, 90, 43, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -301,9 +299,9 @@ body.expo-presentation-active {
 }
 
 .btn-dock {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-subtle);
-  color: #e2e8f0;
+  background: #ffffff;
+  border: 1.5px solid var(--upc-green);
+  color: #005a2b;
   font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 600;
@@ -317,21 +315,20 @@ body.expo-presentation-active {
 }
 
 .btn-dock:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  border-color: var(--border-glass);
+  background: #eaf5ee;
+  border-color: var(--upc-green-bright);
 }
 
 .btn-dock-primary {
-  background: linear-gradient(135deg, #00a854, #006837);
+  background: linear-gradient(135deg, #008744, #005a2b);
   color: #ffffff;
-  border-color: var(--oracle-red);
-  box-shadow: 0 0 16px var(--oracle-red-glow);
+  border: 1.5px solid var(--upc-green-dark);
+  box-shadow: 0 2px 10px var(--upc-green-glow);
 }
 
 .btn-dock-primary:hover {
-  background: linear-gradient(135deg, #00c853, #00a854);
-  box-shadow: 0 0 24px var(--oracle-red-glow);
+  background: linear-gradient(135deg, #00a854, #008744);
+  box-shadow: 0 4px 16px var(--upc-green-glow);
 }
 
 .expo-dock-status {
@@ -339,7 +336,7 @@ body.expo-presentation-active {
   align-items: center;
   gap: 12px;
   font-size: 0.95rem;
-  color: #ffffff;
+  color: #005a2b;
 }
 
 .expo-dock-shortcuts {
@@ -348,11 +345,11 @@ body.expo-presentation-active {
 }
 
 .expo-dock-shortcuts kbd {
-  background: #1e293b;
-  border: 1px solid var(--border-subtle);
+  background: #eaf5ee;
+  border: 1px solid var(--upc-green);
   padding: 2px 6px;
   border-radius: 4px;
-  color: #cbd5e1;
+  color: #005a2b;
 }
 
 /* Animación de entrada de diapositivas */

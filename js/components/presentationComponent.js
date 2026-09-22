@@ -374,10 +374,10 @@ export class PresentationComponent {
         <!-- TOPBAR DE LA EXPOSICIÓN -->
         <header class="expo-pres-topbar">
           <div class="expo-pres-brand" style="display: flex; align-items: center; gap: 14px;">
-            <img src="img/logosistemas2024.png" alt="Logo Sistemas UPC" style="height: 40px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,200,83,0.35));">
-            <div style="border-left: 1px solid rgba(255,255,255,0.12); padding-left: 12px;">
-              <div style="font-weight: 800; font-size: 1.05rem; color: #fff; line-height: 1.2;">ExpoDB Básico</div>
-              <div style="color: #69f0ae; font-size: 0.78rem; font-weight: 600;">Presentador: Juan Sebastián Patiño &bull; UPC</div>
+            <img src="img/logosistemas2024.png" alt="Logo Sistemas UPC" style="height: 40px; width: auto; object-fit: contain;">
+            <div style="border-left: 2px solid var(--upc-green); padding-left: 12px;">
+              <div style="font-weight: 800; font-size: 1.05rem; color: #005a2b; line-height: 1.2;">ExpoDB Básico</div>
+              <div style="color: var(--upc-green); font-size: 0.78rem; font-weight: 700;">Presentador: Juan Sebastián Patiño &bull; UPC</div>
             </div>
           </div>
 
@@ -426,9 +426,9 @@ export class PresentationComponent {
           </div>
 
           <div class="expo-dock-shortcuts" style="display: flex; align-items: center; gap: 16px;">
-            <span style="color: #cbd5e1; font-size: 0.8rem;">👤 <strong>Juan Sebastián Patiño</strong> &bull; 🎓 <strong>Amílkar Sierra</strong></span>
-            <span style="color: #334155;">|</span>
-            <span>Atajos: <kbd>Espacio</kbd> avanzar &bull; <kbd>Tab</kbd> alternar &bull; <kbd>Esc</kbd> salir</span>
+            <span style="color: #005a2b; font-size: 0.82rem;">👤 <strong>Juan Sebastián Patiño</strong> &bull; 🎓 <strong>Amílkar Sierra</strong></span>
+            <span style="color: #cbd5e1;">|</span>
+            <span style="color: #4e6e60;">Atajos: <kbd>Espacio</kbd> avanzar &bull; <kbd>Tab</kbd> alternar &bull; <kbd>Esc</kbd> salir</span>
           </div>
         </footer>
       </div>
@@ -485,13 +485,13 @@ export class PresentationComponent {
             <span class="badge badge-emerald">Demostración en Vivo</span>
             <span class="badge badge-cyan">Tabla: ${ex.table}</span>
           </div>
-          <h2 style="font-size: 1.5rem; color: #fff; margin-top: 4px;">${topic.title} — Consulta Interactiva</h2>
-          <p style="color: #94a3b8; font-size: 0.95rem;">${ex.prompt}</p>
+          <h2 style="font-size: 1.5rem; color: #005a2b; margin-top: 4px; font-weight: 700;">${topic.title} — Consulta Interactiva</h2>
+          <p style="color: #244234; font-size: 0.95rem;">${ex.prompt}</p>
         </div>
 
         <!-- Editor en vivo de la exposición -->
         <div class="slide-demo-editor-card">
-          <div class="sql-box-header" style="background: #0d121c; padding: 8px 14px; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
+          <div class="sql-box-header" style="background: #eaf5ee; border-bottom: 2px solid var(--upc-green); padding: 8px 14px; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
             <div class="sql-box-title">
               <span>⚡</span> Oracle SQL Worksheet (Editable en Vivo)
             </div>

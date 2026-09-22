@@ -1,58 +1,59 @@
 /* ==========================================================================
-   variables.css - Sistema de Diseño Institucional (Ingeniería de Sistemas - UPC)
+   variables.css - Sistema de Diseño Institucional UPC (Fondo Claro + Verde Sistemas)
    Universidad Popular del Cesar & ExpoDB Básico
    ========================================================================== */
 
 :root {
-  /* --- Paleta Institucional (Ingeniería de Sistemas - UPC) --- */
-  --upc-green: #00a854;
-  --upc-green-bright: #00c853;
-  --upc-green-dark: #006837;
-  --upc-green-neon: #00e676;
-  --upc-green-glow: rgba(0, 200, 83, 0.45);
-  --upc-green-subtle: rgba(0, 200, 83, 0.14);
+  /* --- Paleta Verde Institucional (Ingeniería de Sistemas - UPC) --- */
+  --upc-green: #008744;
+  --upc-green-bright: #00a854;
+  --upc-green-dark: #005a2b;
+  --upc-green-neon: #00c853;
+  --upc-green-glow: rgba(0, 168, 84, 0.35);
+  --upc-green-subtle: rgba(0, 168, 84, 0.1);
 
-  /* Mapeo del Acento Principal al Verde Institucional de Sistemas UPC */
-  --oracle-red: #00c853;
-  --oracle-red-hover: #00e676;
-  --oracle-red-glow: rgba(0, 200, 83, 0.45);
-  --oracle-red-subtle: rgba(0, 200, 83, 0.14);
+  /* Acentos Principales */
+  --oracle-red: #008744;
+  --oracle-red-hover: #00a854;
+  --oracle-red-glow: rgba(0, 168, 84, 0.35);
+  --oracle-red-subtle: rgba(0, 168, 84, 0.12);
 
-  /* Fondos Obsidian con Tinte Institucional Forest/Cyber UPC */
-  --bg-abyss: #030805;
-  --bg-obsidian: #061009;
-  --bg-surface: #0b1a10;
-  --bg-surface-elevated: #102417;
-  --bg-surface-glass: rgba(11, 26, 16, 0.84);
-  --bg-card: rgba(16, 36, 23, 0.74);
+  /* --- Fondos Claros Institucionales (UPC Web) --- */
+  --bg-abyss: #eaf5ee;
+  --bg-obsidian: #f3faf6;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #e6f7ec;
+  --bg-surface-glass: rgba(255, 255, 255, 0.94);
+  --bg-card: #ffffff;
 
-  /* Bordes y Líneas */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.14);
-  --border-accent: rgba(0, 200, 83, 0.35);
-  --border-focus: #00e676;
+  /* --- Bordes Verdes de los Divs (Requisito UPC) --- */
+  --border-subtle: rgba(0, 135, 68, 0.25);
+  --border-glass: rgba(0, 168, 84, 0.45);
+  --border-accent: #008744;
+  --border-focus: #00a854;
+  --border-div-green: 2px solid #008744;
 
-  /* Semánticos y Secundarios (UPC & Relational Math) */
-  --neon-cyan: #00f0ff;
-  --neon-cyan-glow: rgba(0, 240, 255, 0.35);
-  --neon-cyan-subtle: rgba(0, 240, 255, 0.12);
+  /* Semánticos y Secundarios */
+  --neon-cyan: #0284c7;
+  --neon-cyan-glow: rgba(2, 132, 199, 0.25);
+  --neon-cyan-subtle: rgba(2, 132, 199, 0.1);
 
-  --amber-gold: #f59e0b;
-  --amber-glow: rgba(245, 158, 11, 0.35);
-  --amber-subtle: rgba(245, 158, 11, 0.12);
+  --amber-gold: #d97706;
+  --amber-glow: rgba(217, 119, 6, 0.25);
+  --amber-subtle: rgba(217, 119, 6, 0.1);
 
-  --emerald-green: #00e676;
-  --emerald-glow: rgba(0, 230, 118, 0.35);
-  --emerald-subtle: rgba(0, 230, 118, 0.12);
+  --emerald-green: #008744;
+  --emerald-glow: rgba(0, 135, 68, 0.25);
+  --emerald-subtle: rgba(0, 135, 68, 0.1);
 
-  --purple-relational: #a855f7;
-  --purple-subtle: rgba(168, 85, 247, 0.12);
+  --purple-relational: #7c3aed;
+  --purple-subtle: rgba(124, 58, 237, 0.1);
 
-  /* Texto y Contrastes */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #030805;
+  /* --- Texto y Contrastes de Alta Legibilidad sobre Fondo Claro --- */
+  --text-primary: #0a1c13;
+  --text-secondary: #244234;
+  --text-muted: #4e6e60;
+  --text-inverse: #ffffff;
 
   /* --- Tipografías (Google Fonts) --- */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -78,12 +79,12 @@
   --radius-full: 9999px;
 
   /* --- Sombras y Efectos Glow Institucionales --- */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.8);
-  --shadow-glow-green: 0 0 20px var(--upc-green-glow);
-  --shadow-glow-red: 0 0 20px var(--upc-green-glow);
-  --shadow-glow-cyan: 0 0 20px var(--neon-cyan-glow);
+  --shadow-sm: 0 2px 8px rgba(0, 90, 43, 0.08);
+  --shadow-md: 0 6px 20px rgba(0, 90, 43, 0.12);
+  --shadow-lg: 0 12px 36px rgba(0, 90, 43, 0.16);
+  --shadow-glow-green: 0 0 16px var(--upc-green-glow);
+  --shadow-glow-red: 0 0 16px var(--upc-green-glow);
+  --shadow-glow-cyan: 0 0 16px var(--neon-cyan-glow);
 
   /* --- Transiciones --- */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);

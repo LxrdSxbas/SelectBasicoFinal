@@ -17,10 +17,11 @@
   left: var(--sidebar-width);
   right: 0;
   height: var(--topbar-height);
-  background: rgba(9, 12, 18, 0.85);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--upc-green);
+  box-shadow: 0 2px 10px rgba(0, 90, 43, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,6 +46,7 @@
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: var(--upc-green-dark);
 }
 
 .topbar-subtitle {
@@ -63,22 +65,22 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  background: var(--bg-surface);
+  background: #f0fdf4;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--upc-green);
 }
 
 .progress-text {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  font-weight: 700;
+  color: var(--upc-green-dark);
 }
 
 .progress-bar-bg {
   width: 90px;
   height: 6px;
-  background: #1e293b;
+  background: #d1fae5;
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -86,20 +88,20 @@
 .progress-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #006837, var(--oracle-red), #69f0ae);
+  background: linear-gradient(90deg, #008744, #00a854);
   border-radius: var(--radius-full);
   transition: width var(--transition-smooth);
 }
 
 /* Botones de acción en topbar */
 .btn-topbar {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  padding: 6px 12px;
+  background: #ffffff;
+  border: 1.5px solid var(--upc-green);
+  color: var(--upc-green-dark);
+  padding: 6px 14px;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -108,15 +110,15 @@
 }
 
 .btn-topbar:hover {
-  background: var(--bg-surface-elevated);
-  color: var(--text-primary);
-  border-color: var(--border-glass);
+  background: #eaf5ee;
+  color: #005a2b;
+  border-color: var(--upc-green-bright);
 }
 
 .btn-topbar.active {
-  background: var(--oracle-red-subtle);
-  color: #69f0ae;
-  border-color: var(--border-accent);
+  background: #eaf5ee;
+  color: #005a2b;
+  border-color: var(--upc-green);
 }
 
 /* --- SIDEBAR LATERAL (NAVEGACIÓN ART. IV) --- */
@@ -126,8 +128,9 @@
   top: 0;
   bottom: 0;
   left: 0;
-  background: var(--bg-abyss);
-  border-right: 1px solid var(--border-subtle);
+  background: #ffffff;
+  border-right: 2px solid var(--upc-green);
+  box-shadow: 2px 0 16px rgba(0, 90, 43, 0.06);
   display: flex;
   flex-direction: column;
   z-index: 50;
@@ -137,7 +140,7 @@
 
 .sidebar-header {
   padding: var(--space-lg) var(--space-lg) var(--space-md);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1.5px solid rgba(0, 135, 68, 0.2);
 }
 
 .brand-badge {
@@ -150,7 +153,7 @@
 .oracle-logo-icon {
   width: 28px;
   height: 28px;
-  background: var(--oracle-red);
+  background: var(--upc-green);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -158,14 +161,14 @@
   font-weight: 900;
   font-size: 14px;
   color: white;
-  box-shadow: 0 0 14px var(--oracle-red-glow);
+  box-shadow: 0 0 10px var(--upc-green-glow);
 }
 
 .brand-title {
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #005a2b;
 }
 
 .brand-tagline {
@@ -181,11 +184,11 @@
 }
 
 .nav-category {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-muted);
+  color: var(--upc-green);
   padding: var(--space-xs) var(--space-md);
   margin-top: var(--space-sm);
 }
@@ -212,16 +215,16 @@
 }
 
 .nav-item-link:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-primary);
+  background: #f0fdf4;
+  color: #005a2b;
   text-decoration: none;
 }
 
 .nav-item-link.active {
-  background: var(--oracle-red-subtle);
-  color: #69f0ae;
-  font-weight: 600;
-  border-left: 3px solid var(--oracle-red);
+  background: #eaf5ee;
+  color: #005a2b;
+  font-weight: 700;
+  border-left: 4px solid var(--upc-green);
 }
 
 .nav-item-link.active::after {
@@ -231,8 +234,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--oracle-red);
-  box-shadow: 0 0 8px var(--oracle-red);
+  background: var(--upc-green);
+  box-shadow: 0 0 6px var(--upc-green);
 }
 
 .nav-index {
@@ -251,7 +254,7 @@
 
 .nav-status-icon {
   font-size: 0.8rem;
-  color: var(--emerald-green);
+  color: var(--upc-green);
   opacity: 0;
   transition: opacity var(--transition-fast);
 }
@@ -263,8 +266,8 @@
 /* Footer de Sidebar */
 .sidebar-footer {
   padding: var(--space-md);
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(5, 7, 10, 0.6);
+  border-top: 1.5px solid rgba(0, 135, 68, 0.2);
+  background: #f4fbf7;
   font-size: 0.75rem;
   color: var(--text-muted);
   display: flex;
@@ -276,13 +279,13 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #94a3b8;
-  font-weight: 500;
+  color: #005a2b;
+  font-weight: 600;
   transition: color var(--transition-fast);
 }
 
 .constitution-link:hover {
-  color: var(--neon-cyan);
+  color: var(--upc-green-bright);
 }
 
 /* --- CONTENEDOR PRINCIPAL --- */
@@ -312,7 +315,7 @@
 
 .section-header {
   margin-bottom: var(--space-xl);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 2px solid rgba(0, 135, 68, 0.2);
   padding-bottom: var(--space-lg);
 }
 
@@ -325,11 +328,12 @@
 
 .section-title {
   margin-bottom: var(--space-xs);
+  color: #005a2b;
 }
 
 .section-lead {
   font-size: 1.05rem;
-  color: #94a3b8;
+  color: #244234;
   max-width: 800px;
 }
 
@@ -340,7 +344,7 @@
   align-items: center;
   margin-top: var(--space-2xl);
   padding-top: var(--space-xl);
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1.5px solid rgba(0, 135, 68, 0.2);
 }
 
 /* Drawer de Esquema (Base de Datos) */
@@ -350,11 +354,9 @@
   right: -420px;
   width: 400px;
   bottom: 0;
-  background: rgba(12, 16, 25, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-left: 1px solid var(--border-glass);
-  box-shadow: var(--shadow-lg);
+  background: #ffffff;
+  border-left: 2px solid var(--upc-green);
+  box-shadow: -6px 0 24px rgba(0, 90, 43, 0.12);
   z-index: 60;
   transition: right var(--transition-normal);
   display: flex;
@@ -373,7 +375,7 @@
   justify-content: space-between;
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1.5px solid rgba(0, 135, 68, 0.2);
 }
 
 /* Mobile Toggle */
@@ -381,7 +383,7 @@
   display: none;
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  color: var(--upc-green-dark);
   font-size: 1.4rem;
   cursor: pointer;
 }
