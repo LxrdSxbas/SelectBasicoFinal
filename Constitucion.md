@@ -1,4 +1,4 @@
-﻿# CONSTITUCIÓN DEL PROYECTO — ExpoDB Básico
+# CONSTITUCIÓN DEL PROYECTO — ExpoDB Básico
 ### Plataforma educativa de sentencias SELECT básicas (Oracle SQL)
  
 > Este documento es la fuente única de verdad para el desarrollo del proyecto.
@@ -74,7 +74,7 @@ expodb-basico/
  
 | Archivo | Responsabilidad | Límites |
 |---|---|---|
-| `universityDb.js` | Datos de ejemplo en memoria (2–3 tablas simples: `ESTUDIANTES`, `CURSOS`, opcionalmente `MATRICULAS`) | No modelar relaciones que impliquen necesidad de JOIN en los ejercicios |
+| `universityDb.js` / `hrDb.js` | Datos de ejemplo en memoria (Esquema oficial Oracle HR: `EMPLOYEES`, `DEPARTMENTS`, `JOBS`, `LOCATIONS`, `COUNTRIES`, `REGIONS`, `JOB_HISTORY`) | No modelar relaciones que impliquen necesidad de JOIN en los ejercicios |
 | `oracleSqlEngine.js` | Parsear y ejecutar `SELECT` con `WHERE`, `DISTINCT`, `ORDER BY`; evaluar predicados `IN`, `LIKE`, `BETWEEN`, `AND`/`OR` | No debe aceptar ni intentar parsear sentencias fuera del alcance (Art. II.2); ante sentencia fuera de alcance, debe responder con mensaje educativo, no error críptico |
 | `algebraConverter.js` | Traducir la sentencia SELECT ejecutada a notación π (proyección) y σ (selección) | Nunca generar notación de join (⨝) |
 | `visualizer.js` | Animar el pipeline lógico: `FROM → WHERE → DISTINCT → SELECT → ORDER BY` | El pipeline debe reflejar el orden lógico real de evaluación de Oracle, no el orden de escritura |
@@ -134,6 +134,6 @@ Este documento puede modificarse únicamente por instrucción explícita del usu
  
 ---
  
-**Versión:** 1.0
-**Alcance:** SELECT básico (WHERE, AND, OR, IN, LIKE, BETWEEN, DISTINCT)
-**Estado:** Listo para entregarse a Antigravity como especificación rectora del proyecto
+**Versión:** 1.1
+**Alcance:** SELECT básico (WHERE, AND, OR, IN, LIKE, BETWEEN, DISTINCT) sobre Esquema Oracle HR
+**Estado:** Actualizado conforme a Enmienda por instrucción explícita del usuario (Esquema Oracle HR)

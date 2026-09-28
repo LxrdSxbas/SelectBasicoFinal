@@ -244,8 +244,8 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-1"><code><span class="kw-select">SELECT</span> nombre, apellido, carrera, promedio <span class="kw-as">AS</span> calificacion_actual
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>;</code></pre>
+            <pre class="sql-code-display" id="sql-code-1"><code><span class="kw-select">SELECT</span> first_name, last_name, job_id, salary <span class="kw-as">AS</span> salario_mensual
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>;</code></pre>
           </div>
 
           <!-- 3. Visualización Animada del Pipeline de Ejecución -->
@@ -260,17 +260,17 @@
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione las columnas <code>nombre</code>, <code>carrera</code> y <code>semestre</code> de la tabla <code>ESTUDIANTES</code>.
+              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione las columnas <code>first_name</code>, <code>last_name</code> y <code>salary</code> de la tabla <code>EMPLOYEES</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, semestre FROM ESTUDIANTES;</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT first_name, last_name, salary FROM EMPLOYEES;</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="1">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="1">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, semestre FROM ESTUDIANTES;">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT first_name, last_name, salary FROM EMPLOYEES;">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -300,13 +300,13 @@
           <div class="card-glass">
             <div class="pedagogical-explanation">
               <p>
-                En una base de datos relacional, una tabla contiene múltiples filas que frecuentemente comparten datos repetidos en ciertos campos. Por ejemplo, en una universidad con miles de alumnos, el atributo <code>carrera</code> o <code>ciudad</code> tendrá decenas de valores repetidos como "Sistemas" o "Bogotá".
+                En una base de datos relacional, una tabla contiene múltiples filas que frecuentemente comparten datos repetidos en ciertos campos. Por ejemplo, en una organización con decenas o miles de empleados, el atributo <code>job_id</code> o <code>department_id</code> tendrá múltiples valores repetidos como "IT_PROG" o "50".
               </p>
               <p>
                 La palabra clave <span class="concept-highlight">DISTINCT</span> se coloca inmediatamente después de <code>SELECT</code> para indicarle a Oracle que elimine todas las tuplas idénticas del conjunto resultante, retornando una única fila por cada combinación exclusiva de valores encontrados.
               </p>
               <p>
-                Es vital comprender que <code>DISTINCT</code> evalúa la fila proyectada en su totalidad: si proyectas <code>SELECT DISTINCT carrera, ciudad</code>, una fila solo se considerará duplicada si <em>ambos</em> campos (carrera y ciudad) son exactamente iguales a otra fila previa.
+                Es vital comprender que <code>DISTINCT</code> evalúa la fila proyectada en su totalidad: si proyectas <code>SELECT DISTINCT job_id, department_id</code>, una fila solo se considerará duplicada si <em>ambos</em> campos son exactamente iguales a otra fila previa.
               </p>
               <div class="tip-box">
                 <span>💡</span>
@@ -320,7 +320,7 @@
           <!-- 2. Ejemplo de Sintaxis -->
           <div class="sql-example-box">
             <div class="sql-box-header">
-              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Carreras Universitarias Únicas</div>
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Cargos Laborales Únicos</div>
               <div class="sql-box-actions">
                 <button class="btn-sql-action btn-copy-sql" data-target="sql-code-2">📋 Copiar</button>
                 <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-2" data-viz="viz-section-2">
@@ -328,8 +328,8 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-2"><code><span class="kw-select">SELECT</span> <span class="kw-distinct">DISTINCT</span> carrera
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>;</code></pre>
+            <pre class="sql-code-display" id="sql-code-2"><code><span class="kw-select">SELECT</span> <span class="kw-distinct">DISTINCT</span> job_id
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>;</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -339,22 +339,22 @@
           <div class="mini-console-card" id="console-2">
             <div class="mini-console-header">
               <div class="mini-console-title">
-                <span>💻</span> Ejercicio 2: Catálogo de Ciudades Únicas
+                <span>💻</span> Ejercicio 2: Catálogo de Departamentos Únicos
               </div>
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Consulta la lista sin duplicados de todas las ciudades de procedencia de los estudiantes de la tabla <code>ESTUDIANTES</code>.
+              🎯 <strong>Instrucción:</strong> Consulta la lista sin duplicados de todos los departamentos (<code>department_id</code>) de los empleados en la tabla <code>EMPLOYEES</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT DISTINCT ciudad FROM ESTUDIANTES;</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT DISTINCT department_id FROM EMPLOYEES;</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="2">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="2">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT DISTINCT ciudad FROM ESTUDIANTES;">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT DISTINCT department_id FROM EMPLOYEES;">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -389,7 +389,7 @@
                 Para formular estas condiciones, Oracle dispone de operadores de comparación fundamentales: igualdad (<code>=</code>), desigualdad estándar (<code>&lt;&gt;</code> o <code>!=</code>), y comparaciones de orden numérico o temporal: menor que (<code>&lt;</code>), mayor que (<code>&gt;</code>), menor o igual (<code>&lt;=</code>) y mayor o igual (<code>&gt;=</code>).
               </p>
               <p>
-                Los valores numéricos se escriben directamente sin comillas (por ejemplo, <code>promedio >= 4.0</code>), mientras que las cadenas de texto (literales alfanuméricos) deben encerrarse estrictamente entre <strong>comillas simples</strong> (como <code>carrera = 'Sistemas'</code>).
+                Los valores numéricos se escriben directamente sin comillas (por ejemplo, <code>salary >= 10000</code>), mientras que las cadenas de texto (literales alfanuméricos) deben encerrarse estrictamente entre <strong>comillas simples</strong> (como <code>job_id = 'IT_PROG'</code>).
               </p>
               <div class="tip-box">
                 <span>💡</span>
@@ -403,7 +403,7 @@
           <!-- 2. Ejemplo de Sintaxis -->
           <div class="sql-example-box">
             <div class="sql-box-header">
-              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Estudiantes de Cuadro de Honor</div>
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Empleados con Salario Alto</div>
               <div class="sql-box-actions">
                 <button class="btn-sql-action btn-copy-sql" data-target="sql-code-3">📋 Copiar</button>
                 <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-3" data-viz="viz-section-3">
@@ -411,9 +411,9 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-3"><code><span class="kw-select">SELECT</span> nombre, apellido, carrera, promedio
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
-<span class="kw-where">WHERE</span> promedio &gt;= 4.5;</code></pre>
+            <pre class="sql-code-display" id="sql-code-3"><code><span class="kw-select">SELECT</span> first_name, last_name, job_id, salary
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>
+<span class="kw-where">WHERE</span> salary &gt;= 10000;</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -423,22 +423,22 @@
           <div class="mini-console-card" id="console-3">
             <div class="mini-console-header">
               <div class="mini-console-title">
-                <span>💻</span> Ejercicio 3: Filtrar Estudiantes de Medicina
+                <span>💻</span> Ejercicio 3: Filtrar Empleados de Tecnología (IT_PROG)
               </div>
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione todas las columnas de la tabla <code>ESTUDIANTES</code> donde la <code>carrera</code> sea igual a <code>'Medicina'</code>.
+              🎯 <strong>Instrucción:</strong> Escribe una consulta que seleccione todas las columnas de la tabla <code>EMPLOYEES</code> donde el cargo (<code>job_id</code>) sea igual a <code>'IT_PROG'</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT * FROM ESTUDIANTES WHERE carrera = 'Medicina';</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT * FROM EMPLOYEES WHERE job_id = 'IT_PROG';</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="3">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="3">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT * FROM ESTUDIANTES WHERE carrera = 'Medicina';">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT * FROM EMPLOYEES WHERE job_id = 'IT_PROG';">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -478,7 +478,7 @@
               <div class="tip-box">
                 <span>💡</span>
                 <div>
-                  <strong>Ejemplo de Precedencia:</strong> <code>carrera = 'Sistemas' OR carrera = 'Medicina' AND promedio >= 4.5</code> se interpreta internamente como "Sistemas (con cualquier promedio) O (Medicina con promedio >= 4.5)". Para exigir el promedio alto a ambas carreras, es indispensable agrupar: <code>(carrera = 'Sistemas' OR carrera = 'Medicina') AND promedio >= 4.5</code>.
+                  <strong>Ejemplo de Precedencia:</strong> <code>department_id = 50 OR department_id = 60 AND salary >= 5000</code> se interpreta internamente como "Dept 50 (con cualquier salario) O (Dept 60 con salario >= 5000)". Para exigir el salario alto a ambos departamentos, es indispensable agrupar: <code>(department_id = 50 OR department_id = 60) AND salary >= 5000</code>.
                 </div>
               </div>
             </div>
@@ -495,10 +495,10 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-4"><code><span class="kw-select">SELECT</span> nombre, carrera, promedio, ciudad
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
-<span class="kw-where">WHERE</span> (carrera = <span class="sql-str">'Sistemas'</span> <span class="kw-or">OR</span> carrera = <span class="sql-str">'Industrial'</span>)
-  <span class="kw-and">AND</span> promedio &gt;= 4.0;</code></pre>
+            <pre class="sql-code-display" id="sql-code-4"><code><span class="kw-select">SELECT</span> first_name, last_name, job_id, salary, department_id
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>
+<span class="kw-where">WHERE</span> (department_id = 50 <span class="kw-or">OR</span> department_id = 60)
+  <span class="kw-and">AND</span> salary &gt;= 5000;</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -513,17 +513,17 @@
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Encuentra a los estudiantes que pertenezcan a la carrera <code>'Sistemas'</code> <strong>Y</strong> que su <code>promedio</code> sea mayor o igual a <code>4.2</code>. Proyecta <code>nombre</code>, <code>carrera</code> y <code>promedio</code>.
+              🎯 <strong>Instrucción:</strong> Encuentra a los empleados cuyo cargo sea <code>'IT_PROG'</code> <strong>Y</strong> su salario (<code>salary</code>) sea mayor o igual a <code>5000</code>. Proyecta <code>first_name</code>, <code>last_name</code>, <code>job_id</code> y <code>salary</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE carrera = 'Sistemas' AND promedio >= 4.2;</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE job_id = 'IT_PROG' AND salary >= 5000;</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="4">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="4">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE carrera = 'Sistemas' AND promedio >= 4.2;">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE job_id = 'IT_PROG' AND salary >= 5000;">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -555,10 +555,10 @@
                 El operador <span class="concept-highlight">BETWEEN ... AND ...</span> se emplea para comprobar de manera elegante y concisa si el valor de una columna se encuentra dentro de un rango específico determinado por dos límites: un límite inferior y un límite superior.
               </p>
               <p>
-                Una propiedad vital y obligatoria de recordar en Oracle SQL es que **BETWEEN es completamente inclusivo**. Es decir, la condición <code>semestre BETWEEN 3 AND 6</code> equivale de manera idéntica y estricta a escribir: <code>semestre >= 3 AND semestre <= 6</code>. Tanto el 3 como el 6 están incluidos en los resultados.
+                Una propiedad vital y obligatoria de recordar en Oracle SQL es que **BETWEEN es completamente inclusivo**. Es decir, la condición <code>salary BETWEEN 4000 AND 9000</code> equivale de manera idéntica y estricta a escribir: <code>salary >= 4000 AND salary <= 9000</code>. Tanto el 4000 como el 9000 están incluidos en los resultados.
               </p>
               <p>
-                Es imperativo que el primer valor especificado sea el menor y el segundo el mayor. Si se escribe erróneamente un orden invertido como <code>semestre BETWEEN 6 AND 3</code>, la condición evaluará siempre a FALSO en Oracle, ya que ningún número puede ser simultáneamente mayor o igual a 6 y menor o igual a 3.
+                Es imperativo que el primer valor especificado sea el menor y el segundo el mayor. Si se escribe erróneamente un orden invertido como <code>salary BETWEEN 9000 AND 4000</code>, la condición evaluará siempre a FALSO en Oracle, ya que ningún número puede ser simultáneamente mayor o igual a 9000 y menor o igual a 4000.
               </p>
               <div class="tip-box">
                 <span>💡</span>
@@ -572,7 +572,7 @@
           <!-- 2. Ejemplo de Sintaxis -->
           <div class="sql-example-box">
             <div class="sql-box-header">
-              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Estudiantes de Mitad de Carrera</div>
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Rango Salarial Medio</div>
               <div class="sql-box-actions">
                 <button class="btn-sql-action btn-copy-sql" data-target="sql-code-5">📋 Copiar</button>
                 <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-5" data-viz="viz-section-5">
@@ -580,9 +580,9 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-5"><code><span class="kw-select">SELECT</span> nombre, apellido, semestre, promedio
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
-<span class="kw-where">WHERE</span> semestre <span class="kw-between">BETWEEN</span> 4 <span class="kw-and">AND</span> 7;</code></pre>
+            <pre class="sql-code-display" id="sql-code-5"><code><span class="kw-select">SELECT</span> first_name, last_name, job_id, salary
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>
+<span class="kw-where">WHERE</span> salary <span class="kw-between">BETWEEN</span> 4000 <span class="kw-and">AND</span> 9000;</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -592,22 +592,22 @@
           <div class="mini-console-card" id="console-5">
             <div class="mini-console-header">
               <div class="mini-console-title">
-                <span>💻</span> Ejercicio 5: Rango de Notas Académicas
+                <span>💻</span> Ejercicio 5: Rango Salarial de Empleados
               </div>
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Escribe una consulta para obtener el <code>nombre</code>, <code>carrera</code> y <code>promedio</code> de los estudiantes cuyo promedio se encuentre en el rango entre <code>3.5</code> y <code>4.5</code> (inclusive).
+              🎯 <strong>Instrucción:</strong> Escribe una consulta para obtener el <code>first_name</code>, <code>last_name</code> y <code>salary</code> de los empleados cuyo salario se encuentre en el rango entre <code>4000</code> y <code>8000</code> (inclusive).
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE promedio BETWEEN 3.5 AND 4.5;</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT first_name, last_name, salary FROM EMPLOYEES WHERE salary BETWEEN 4000 AND 8000;</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="5">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="5">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE promedio BETWEEN 3.5 AND 4.5;">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT first_name, last_name, salary FROM EMPLOYEES WHERE salary BETWEEN 4000 AND 8000;">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -647,7 +647,7 @@
               <div class="tip-box">
                 <span>💡</span>
                 <div>
-                  <strong>Equivalencia Lógica:</strong> <code>carrera IN ('Sistemas', 'Medicina')</code> es conceptualmente idéntico a <code>(carrera = 'Sistemas' OR carrera = 'Medicina')</code>.
+                  <strong>Equivalencia Lógica:</strong> <code>department_id IN (10, 20, 90)</code> es conceptualmente idéntico a <code>(department_id = 10 OR department_id = 20 OR department_id = 90)</code>.
                 </div>
               </div>
             </div>
@@ -656,7 +656,7 @@
           <!-- 2. Ejemplo de Sintaxis -->
           <div class="sql-example-box">
             <div class="sql-box-header">
-              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Sedes Principales</div>
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Departamentos Seleccionados</div>
               <div class="sql-box-actions">
                 <button class="btn-sql-action btn-copy-sql" data-target="sql-code-6">📋 Copiar</button>
                 <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-6" data-viz="viz-section-6">
@@ -664,9 +664,9 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-6"><code><span class="kw-select">SELECT</span> nombre, carrera, ciudad
-<span class="kw-from">FROM</span> <span class="sql-table">ESTUDIANTES</span>
-<span class="kw-where">WHERE</span> ciudad <span class="kw-in">IN</span> (<span class="sql-str">'Bogotá'</span>, <span class="sql-str">'Medellín'</span>, <span class="sql-str">'Cali'</span>);</code></pre>
+            <pre class="sql-code-display" id="sql-code-6"><code><span class="kw-select">SELECT</span> first_name, last_name, job_id, department_id
+<span class="kw-from">FROM</span> <span class="sql-table">EMPLOYEES</span>
+<span class="kw-where">WHERE</span> department_id <span class="kw-in">IN</span> (10, 20, 90);</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -676,22 +676,22 @@
           <div class="mini-console-card" id="console-6">
             <div class="mini-console-header">
               <div class="mini-console-title">
-                <span>💻</span> Ejercicio 6: Filtro por Lista de Carreras
+                <span>💻</span> Ejercicio 6: Filtro por Lista de Cargos
               </div>
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Recupera a los estudiantes cuya <code>carrera</code> esté en el conjunto <code>('Industrial', 'Derecho')</code>. Proyecta <code>nombre</code>, <code>carrera</code> y <code>semestre</code>.
+              🎯 <strong>Instrucción:</strong> Recupera a los empleados cuyo cargo (<code>job_id</code>) esté en el conjunto <code>('IT_PROG', 'AD_VP')</code>. Proyecta <code>first_name</code>, <code>last_name</code>, <code>job_id</code> y <code>salary</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT nombre, carrera, semestre FROM ESTUDIANTES WHERE carrera IN ('Industrial', 'Derecho');</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE job_id IN ('IT_PROG', 'AD_VP');</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="6">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="6">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT nombre, carrera, semestre FROM ESTUDIANTES WHERE carrera IN ('Industrial', 'Derecho');">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE job_id IN ('IT_PROG', 'AD_VP');">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -727,14 +727,14 @@
               </p>
               <ul style="list-style: none; padding-left: 8px; display: flex; flex-direction: column; gap: 8px; margin: 8px 0;">
                 <li>
-                  <code style="color: var(--neon-cyan); font-weight: 700; font-size: 1.1em;">%</code> (Signo de Porcentaje): Representa <strong>cero, uno o múltiples caracteres arbitrarios</strong>. Por ejemplo, <code>'A%'</code> coincide con cualquier texto que empiece con "A" (como "Alejandro", "Ana" o simplemente "A").
+                  <code style="color: var(--neon-cyan); font-weight: 700; font-size: 1.1em;">%</code> (Signo de Porcentaje): Representa <strong>cero, uno o múltiples caracteres arbitrarios</strong>. Por ejemplo, <code>'A%'</code> coincide con cualquier texto que empiece con "A" (como "Alexander", "Austin" o simplemente "A").
                 </li>
                 <li>
-                  <code style="color: var(--amber-gold); font-weight: 700; font-size: 1.1em;">_</code> (Guión Bajo): Representa <strong>exactamente un único carácter</strong>. Por ejemplo, <code>'SIS___'</code> coincide con la palabra SIS seguida de exactamente 3 caracteres más (longitud fija de 6 caracteres, como "SIS101").
+                  <code style="color: var(--amber-gold); font-weight: 700; font-size: 1.1em;">_</code> (Guión Bajo): Representa <strong>exactamente un único carácter</strong>. Por ejemplo, <code>'SA___'</code> coincide con la palabra SA seguida de exactamente 3 caracteres más (longitud fija de 5 caracteres, como "SA_REP" o "SA_MAN").
                 </li>
               </ul>
               <p>
-                Si buscas una subcadena en cualquier posición dentro del texto, rodea el término con porcentajes a ambos lados: <code>LIKE '%Datos%'</code>.
+                Si buscas una subcadena en cualquier posición dentro del texto, rodea el término con porcentajes a ambos lados: <code>LIKE '%Manager%'</code>.
               </p>
               <div class="tip-box">
                 <span>💡</span>
@@ -748,7 +748,7 @@
           <!-- 2. Ejemplo de Sintaxis -->
           <div class="sql-example-box">
             <div class="sql-box-header">
-              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Cursos del Área de Sistemas</div>
+              <div class="sql-box-title"><span>📜</span> Ejemplo de Sintaxis: Cargos del Área de Ventas (SA)</div>
               <div class="sql-box-actions">
                 <button class="btn-sql-action btn-copy-sql" data-target="sql-code-7">📋 Copiar</button>
                 <button class="btn-sql-action btn-sql-run btn-run-example" data-target="sql-code-7" data-viz="viz-section-7">
@@ -756,9 +756,9 @@
                 </button>
               </div>
             </div>
-            <pre class="sql-code-display" id="sql-code-7"><code><span class="kw-select">SELECT</span> id_curso, nombre_curso, departamento
-<span class="kw-from">FROM</span> <span class="sql-table">CURSOS</span>
-<span class="kw-where">WHERE</span> id_curso <span class="kw-like">LIKE</span> <span class="sql-str">'SIS%'</span>;</code></pre>
+            <pre class="sql-code-display" id="sql-code-7"><code><span class="kw-select">SELECT</span> job_id, job_title, min_salary, max_salary
+<span class="kw-from">FROM</span> <span class="sql-table">JOBS</span>
+<span class="kw-where">WHERE</span> job_id <span class="kw-like">LIKE</span> <span class="sql-str">'SA_%'</span>;</code></pre>
           </div>
 
           <!-- 3. Pipeline Animado -->
@@ -768,22 +768,22 @@
           <div class="mini-console-card" id="console-7">
             <div class="mini-console-header">
               <div class="mini-console-title">
-                <span>💻</span> Ejercicio 7: Nombres que Inician con 'B'
+                <span>💻</span> Ejercicio 7: Nombres de Empleados que Inician con 'D'
               </div>
               <span class="badge badge-amber">Reto Interactivo</span>
             </div>
             <div class="exercise-prompt">
-              🎯 <strong>Instrucción:</strong> Encuentra a todos los estudiantes cuyo <code>nombre</code> comience con la letra <code>'B'</code>. Selecciona <code>id</code>, <code>nombre</code> y <code>apellido</code>.
+              🎯 <strong>Instrucción:</strong> Encuentra a todos los empleados cuyo <code>first_name</code> comience con la letra <code>'D'</code>. Selecciona <code>employee_id</code>, <code>first_name</code>, <code>last_name</code> y <code>salary</code>.
             </div>
             <div class="sql-editor-wrapper">
-              <textarea class="sql-editor-textarea" spellcheck="false">SELECT id, nombre, apellido FROM ESTUDIANTES WHERE nombre LIKE 'B%';</textarea>
+              <textarea class="sql-editor-textarea" spellcheck="false">SELECT employee_id, first_name, last_name, salary FROM EMPLOYEES WHERE first_name LIKE 'D%';</textarea>
             </div>
             <div class="mini-console-controls">
               <div>
                 <button class="btn-execute btn-solve-mini" data-section="7">▶ Ejecutar y Validar</button>
                 <button class="btn-secondary btn-reset-mini" data-section="7">↺ Reiniciar</button>
               </div>
-              <button class="btn-secondary btn-hint-mini" data-hint="SELECT id, nombre, apellido FROM ESTUDIANTES WHERE nombre LIKE 'B%';">💡 Ver Pista</button>
+              <button class="btn-secondary btn-hint-mini" data-hint="SELECT employee_id, first_name, last_name, salary FROM EMPLOYEES WHERE first_name LIKE 'D%';">💡 Ver Pista</button>
             </div>
             <div class="feedback-box"></div>
             <div class="results-table-container"></div>
@@ -810,7 +810,7 @@
 
           <div class="card-glass" style="margin-bottom: var(--space-lg);">
             <p style="font-size: 0.95rem; color: #cbd5e1;">
-              En esta consola puedes redactar cualquier consulta <code>SELECT</code> válida en Oracle SQL sobre las tablas <code>ESTUDIANTES</code>, <code>CURSOS</code> o <code>MATRICULAS</code>. El simulador compilará la consulta, traducirá automáticamente el resultado a notación matemática de <strong>Álgebra Relacional pura (&pi; y &sigma;)</strong> y validará que la sentencia respete el alcance educativo del Artículo II.2 de la Constitución.
+              En esta consola puedes redactar cualquier consulta <code>SELECT</code> válida en Oracle SQL sobre las tablas del esquema HR (<code>EMPLOYEES</code>, <code>DEPARTMENTS</code>, <code>JOBS</code>, <code>LOCATIONS</code>, <code>COUNTRIES</code>, <code>REGIONS</code> o <code>JOB_HISTORY</code>). El simulador compilará la consulta, traducirá automáticamente el resultado a notación matemática de <strong>Álgebra Relacional pura (&pi; y &sigma;)</strong> y validará que la sentencia respete el alcance educativo del Artículo II.2 de la Constitución.
             </p>
           </div>
 
@@ -884,7 +884,7 @@
     <aside class="schema-drawer" id="schemaDrawer" aria-label="Explorador de esquema">
       <div class="schema-drawer-header">
         <h3 style="font-size: 1rem; color: #005a2b; display: flex; align-items: center; gap: 8px; font-weight: 700;">
-          <span>🗄️</span> Esquema UniversityDB
+          <span>🗄️</span> Esquema Oracle HR
         </h3>
         <button class="btn-sql-action" id="btnCloseSchemaDrawer" title="Cerrar panel">✕</button>
       </div>

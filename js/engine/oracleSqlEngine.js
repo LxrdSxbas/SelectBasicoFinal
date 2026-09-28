@@ -137,7 +137,7 @@ export class OracleSqlEngine {
       for (const row of initialRows) {
         const evaluation = this.evaluateCondition(parsed.whereClause, row);
         rowDecisions.push({
-          rowId: row[tableDef.primaryKey] || row.id || row.id_curso || row.__originalIndex,
+          rowId: (tableDef.primaryKey && row[tableDef.primaryKey] !== undefined) ? row[tableDef.primaryKey] : (row.employee_id || row.id || row.__originalIndex),
           passed: evaluation.passed,
           reason: evaluation.reason
         });
@@ -168,7 +168,7 @@ export class OracleSqlEngine {
         outputRowsCount: filteredRows.length,
         outputRows: [...filteredRows],
         decisions: initialRows.map(r => ({
-          rowId: r[tableDef.primaryKey] || r.id,
+          rowId: (tableDef.primaryKey && r[tableDef.primaryKey] !== undefined) ? r[tableDef.primaryKey] : (r.employee_id || r.id || r.__originalIndex),
           passed: true,
           reason: 'Sin restricción WHERE'
         }))
@@ -186,8 +186,9 @@ export class OracleSqlEngine {
       for (const row of distinctRows) {
         // En Oracle, DISTINCT aplica sobre la proyección final de columnas solicitadas
         const projectionKey = parsed.columns.map(colSpec => {
-          const colName = colSpec.name === '*' ? Object.values(row).join('|') : row[colSpec.name];
-          return String(colName);
+          if (colSpec.name === '*') return Object.values(row).join('|');
+          const rowKey = Object.keys(row).find(k => k.toLowerCase() === colSpec.name.toLowerCase());
+          return String(rowKey ? row[rowKey] : (row[colSpec.name] ?? ''));
         }).join(':::');
 
         if (!seen.has(projectionKey)) {

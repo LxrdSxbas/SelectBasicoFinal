@@ -42,31 +42,31 @@ class ExpoApp {
     const sectionExamples = [
       {
         id: 'viz-section-1',
-        query: 'SELECT nombre, apellido, carrera, promedio AS calificacion_actual FROM ESTUDIANTES;'
+        query: 'SELECT first_name, last_name, job_id, salary AS salario_mensual FROM EMPLOYEES;'
       },
       {
         id: 'viz-section-2',
-        query: 'SELECT DISTINCT carrera FROM ESTUDIANTES;'
+        query: 'SELECT DISTINCT job_id FROM EMPLOYEES;'
       },
       {
         id: 'viz-section-3',
-        query: 'SELECT nombre, apellido, carrera, promedio FROM ESTUDIANTES WHERE promedio >= 4.5;'
+        query: 'SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE salary >= 10000;'
       },
       {
         id: 'viz-section-4',
-        query: "SELECT nombre, carrera, promedio, ciudad FROM ESTUDIANTES WHERE (carrera = 'Sistemas' OR carrera = 'Industrial') AND promedio >= 4.0;"
+        query: "SELECT first_name, last_name, job_id, salary, department_id FROM EMPLOYEES WHERE (department_id = 50 OR department_id = 60) AND salary >= 5000;"
       },
       {
         id: 'viz-section-5',
-        query: 'SELECT nombre, apellido, semestre, promedio FROM ESTUDIANTES WHERE semestre BETWEEN 4 AND 7;'
+        query: 'SELECT first_name, last_name, job_id, salary FROM EMPLOYEES WHERE salary BETWEEN 4000 AND 9000;'
       },
       {
         id: 'viz-section-6',
-        query: "SELECT nombre, carrera, ciudad FROM ESTUDIANTES WHERE ciudad IN ('Bogotá', 'Medellín', 'Cali');"
+        query: "SELECT first_name, last_name, job_id, department_id FROM EMPLOYEES WHERE department_id IN (10, 20, 90);"
       },
       {
         id: 'viz-section-7',
-        query: "SELECT id_curso, nombre_curso, departamento FROM CURSOS WHERE id_curso LIKE 'SIS%';"
+        query: "SELECT job_id, job_title, min_salary, max_salary FROM JOBS WHERE job_id LIKE 'SA_%';"
       }
     ];
 
@@ -134,63 +134,63 @@ class ExpoApp {
       1: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
+          if (res.fromTable !== 'EMPLOYEES') return false;
           const cols = res.columns.map(c => c.original.toLowerCase());
-          return cols.includes('nombre') && cols.includes('carrera') && cols.includes('semestre');
+          return cols.includes('first_name') && cols.includes('last_name') && cols.includes('salary');
         },
-        successMsg: '¡Excelente trabajo! Has proyectado correctamente nombre, carrera y semestre de ESTUDIANTES.'
+        successMsg: '¡Excelente trabajo! Has proyectado correctamente first_name, last_name y salary de EMPLOYEES.'
       },
       2: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
-          return res.parsedQuery.isDistinct && res.columns.some(c => c.original.toLowerCase() === 'ciudad');
+          if (res.fromTable !== 'EMPLOYEES') return false;
+          return res.parsedQuery.isDistinct && res.columns.some(c => ['department_id', 'job_id'].includes(c.original.toLowerCase()));
         },
-        successMsg: '¡Perfecto! DISTINCT deduplicó las ciudades exitosamente retornando valores únicos.'
+        successMsg: '¡Perfecto! DISTINCT deduplicó las filas exitosamente retornando valores únicos.'
       },
       3: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
-          return res.parsedQuery.whereRaw && /carrera\s*=\s*'Medicina'/i.test(res.parsedQuery.whereRaw) && res.rows.length === 3;
+          if (res.fromTable !== 'EMPLOYEES') return false;
+          return res.parsedQuery.whereRaw && /job_id\s*=\s*'IT_PROG'/i.test(res.parsedQuery.whereRaw) && res.rows.length === 5;
         },
-        successMsg: '¡Correcto! Has filtrado horizontalmente con WHERE las tuplas de la carrera Medicina.'
+        successMsg: '¡Correcto! Has filtrado horizontalmente con WHERE las tuplas del cargo IT_PROG.'
       },
       4: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
+          if (res.fromTable !== 'EMPLOYEES') return false;
           const whereStr = res.parsedQuery.whereRaw || '';
-          return /carrera\s*=\s*'Sistemas'/i.test(whereStr) && /promedio\s*>=\s*4\.2/i.test(whereStr) && /AND/i.test(whereStr);
+          return /job_id\s*=\s*'IT_PROG'/i.test(whereStr) && /salary\s*>=\s*5000/i.test(whereStr) && /AND/i.test(whereStr);
         },
         successMsg: '¡Gran lógica booleana! Ambas condiciones AND se evaluaron simultáneamente de forma correcta.'
       },
       5: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
+          if (res.fromTable !== 'EMPLOYEES') return false;
           const whereStr = res.parsedQuery.whereRaw || '';
-          return /BETWEEN\s+3\.5\s+AND\s+4\.5/i.test(whereStr) || /promedio\s*>=\s*3\.5\s+AND\s+promedio\s*<=\s*4\.5/i.test(whereStr);
+          return /BETWEEN\s+4000\s+AND\s+8000/i.test(whereStr) || /salary\s*>=\s*4000\s+AND\s+salary\s*<=\s*8000/i.test(whereStr);
         },
         successMsg: '¡Excelente! Has dominado el operador BETWEEN para rangos inclusivos.'
       },
       6: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
+          if (res.fromTable !== 'EMPLOYEES') return false;
           const whereStr = res.parsedQuery.whereRaw || '';
-          return /IN\s*\(/i.test(whereStr) && /Industrial/i.test(whereStr) && /Derecho/i.test(whereStr);
+          return /IN\s*\(/i.test(whereStr) && /IT_PROG/i.test(whereStr) && /AD_VP/i.test(whereStr);
         },
         successMsg: '¡Brillante! El operador IN comprobó con éxito la pertenencia al conjunto especificado.'
       },
       7: {
         validate: (res) => {
           if (!res.success) return false;
-          if (res.fromTable !== 'ESTUDIANTES') return false;
+          if (res.fromTable !== 'EMPLOYEES') return false;
           const whereStr = res.parsedQuery.whereRaw || '';
-          return /LIKE\s*'B%'/i.test(whereStr);
+          return /first_name\s+LIKE\s+'D%'/i.test(whereStr) || /LIKE\s*'D%'/i.test(whereStr);
         },
-        successMsg: '¡Dominio del comodín %! Has recuperado las tuplas con nombres iniciados por "B".'
+        successMsg: '¡Dominio del comodín %! Has recuperado las tuplas de empleados con nombres iniciados por "D".'
       }
     };
 

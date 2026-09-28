@@ -5,25 +5,25 @@ export const QUIZ_QUESTIONS = [
   {
     id: 1,
     topic: '1. SELECT y FROM',
-    question: 'En Oracle SQL, ¿cuál es la forma correcta de consultar las columnas "nombre" y "promedio" de la tabla "ESTUDIANTES" asignando el alias "nota_final" al promedio?',
+    question: 'En Oracle SQL, ¿cuál es la forma correcta de consultar las columnas "first_name" y "salary" de la tabla "EMPLOYEES" asignando el alias "salario_mensual" al salario?',
     code: null,
     options: [
-      { text: 'SELECT nombre, promedio AS nota_final FROM ESTUDIANTES;', isCorrect: true, explanation: '¡Correcto! En Oracle SQL, la palabra clave opcional AS o un espacio después del nombre de columna define un alias para la proyección.' },
-      { text: 'SELECT nombre, nota_final = promedio FROM ESTUDIANTES;', isCorrect: false, explanation: 'Incorrecto. La sintaxis "alias = columna" corresponde a dialectos como T-SQL, no es estándar en Oracle SQL.' },
-      { text: 'FROM ESTUDIANTES SELECT nombre, promedio AS nota_final;', isCorrect: false, explanation: 'Incorrecto. Aunque el orden de ejecución lógico comience por FROM, la sintaxis escrita debe comenzar obligatoriamente con SELECT.' },
-      { text: 'SELECT * FROM ESTUDIANTES WHERE alias(promedio, nota_final);', isCorrect: false, explanation: 'Incorrecto. Los alias se definen en la cláusula SELECT, no en el predicado WHERE.' }
+      { text: 'SELECT first_name, salary AS salario_mensual FROM EMPLOYEES;', isCorrect: true, explanation: '¡Correcto! En Oracle SQL, la palabra clave opcional AS o un espacio después del nombre de columna define un alias para la proyección.' },
+      { text: 'SELECT first_name, salario_mensual = salary FROM EMPLOYEES;', isCorrect: false, explanation: 'Incorrecto. La sintaxis "alias = columna" corresponde a dialectos como T-SQL, no es estándar en Oracle SQL.' },
+      { text: 'FROM EMPLOYEES SELECT first_name, salary AS salario_mensual;', isCorrect: false, explanation: 'Incorrecto. Aunque el orden de ejecución lógico comience por FROM, la sintaxis escrita debe comenzar obligatoriamente con SELECT.' },
+      { text: 'SELECT * FROM EMPLOYEES WHERE alias(salary, salario_mensual);', isCorrect: false, explanation: 'Incorrecto. Los alias se definen en la cláusula SELECT, no en el predicado WHERE.' }
     ]
   },
   {
     id: 2,
     topic: '2. DISTINCT',
-    question: 'Si ejecutamos la siguiente consulta sobre una tabla con 12 estudiantes donde 4 estudian "Sistemas", 3 "Medicina", 3 "Industrial" y 2 "Derecho":',
-    code: 'SELECT DISTINCT carrera FROM ESTUDIANTES;',
+    question: 'Si ejecutamos la siguiente consulta sobre la tabla "EMPLOYEES" donde existen 19 empleados asignados a distintos departamentos:',
+    code: 'SELECT DISTINCT department_id FROM EMPLOYEES;',
     options: [
-      { text: 'Retorna 4 filas, una por cada nombre de carrera única.', isCorrect: true, explanation: '¡Correcto! DISTINCT elimina las tuplas duplicadas de la proyección, dejando una sola tupla por valor único encontrado.' },
-      { text: 'Retorna 12 filas porque DISTINCT solo cuenta los registros.', isCorrect: false, explanation: 'Incorrecto. DISTINCT deduplica físicamente las filas del conjunto resultante.' },
+      { text: 'Retorna una fila por cada departamento único presente, eliminando duplicados.', isCorrect: true, explanation: '¡Correcto! DISTINCT elimina las tuplas duplicadas de la proyección, dejando una sola tupla por valor único encontrado.' },
+      { text: 'Retorna 19 filas porque DISTINCT solo cuenta los registros.', isCorrect: false, explanation: 'Incorrecto. DISTINCT deduplica físicamente las filas del conjunto resultante.' },
       { text: 'Genera un error de sintaxis porque falta el operador WHERE.', isCorrect: false, explanation: 'Incorrecto. DISTINCT es perfectamente válido y común sin necesidad de una cláusula WHERE.' },
-      { text: 'Retorna únicamente la primera carrera encontrada en la tabla.', isCorrect: false, explanation: 'Incorrecto. No limita a un solo resultado, sino a todas las variantes únicas.' }
+      { text: 'Retorna únicamente el primer departamento encontrado en la tabla.', isCorrect: false, explanation: 'Incorrecto. No limita a un solo resultado, sino a todas las variantes únicas.' }
     ]
   },
   {
@@ -42,7 +42,7 @@ export const QUIZ_QUESTIONS = [
     id: 4,
     topic: '4. Operadores Lógicos AND / OR',
     question: '¿Cuál es la regla de precedencia por defecto entre AND y OR cuando no se usan paréntesis?',
-    code: "SELECT * FROM ESTUDIANTES \nWHERE carrera = 'Sistemas' OR carrera = 'Industrial' AND promedio >= 4.0;",
+    code: "SELECT * FROM EMPLOYEES \nWHERE department_id = 50 OR department_id = 60 AND salary >= 5000;",
     options: [
       { text: 'AND tiene mayor precedencia y se evalúa antes que OR.', isCorrect: true, explanation: '¡Exacto! El operador AND actúa de forma análoga a la multiplicación en álgebra y se resuelve antes que el OR, salvo que se usen paréntesis ( ).' },
       { text: 'OR tiene mayor precedencia y se evalúa antes que AND.', isCorrect: false, explanation: 'Incorrecto. AND precede estrictamente a OR en el estándar SQL.' },
@@ -53,22 +53,22 @@ export const QUIZ_QUESTIONS = [
   {
     id: 5,
     topic: '5. BETWEEN',
-    question: 'Sobre la cláusula BETWEEN en la siguiente sentencia:',
-    code: 'SELECT * FROM ESTUDIANTES WHERE semestre BETWEEN 3 AND 6;',
+    question: 'Sobre la cláusula BETWEEN en la siguiente sentencia sobre la tabla EMPLOYEES:',
+    code: 'SELECT * FROM EMPLOYEES WHERE salary BETWEEN 4000 AND 8000;',
     options: [
-      { text: 'Incluye los extremos: equivale exactamente a semestre >= 3 AND semestre <= 6.', isCorrect: true, explanation: '¡Correcto! En Oracle SQL, el operador BETWEEN es inclusivo en ambos límites (cerrado en ambos lados).' },
-      { text: 'Es exclusivo: solo incluye semestres 4 y 5.', isCorrect: false, explanation: 'Incorrecto. BETWEEN siempre incluye los valores límites indicados.' },
-      { text: 'Solo funciona con fechas, no con números enteros.', isCorrect: false, explanation: 'Incorrecto. BETWEEN opera tanto con tipos NUMBER como DATE y VARCHAR2.' },
-      { text: 'Requiere que el valor mayor se coloque antes que el menor (BETWEEN 6 AND 3).', isCorrect: false, explanation: 'Incorrecto. La sintaxis exige BETWEEN menor AND mayor; invertirlo resultaría en 0 filas.' }
+      { text: 'Incluye los extremos: equivale exactamente a salary >= 4000 AND salary <= 8000.', isCorrect: true, explanation: '¡Correcto! En Oracle SQL, el operador BETWEEN es inclusivo en ambos límites (cerrado en ambos lados).' },
+      { text: 'Es exclusivo: solo incluye salarios estrictamente mayores a 4000 y menores a 8000.', isCorrect: false, explanation: 'Incorrecto. BETWEEN siempre incluye los valores límites indicados.' },
+      { text: 'Solo funciona con fechas, no con números.', isCorrect: false, explanation: 'Incorrecto. BETWEEN opera tanto con tipos NUMBER como DATE y VARCHAR2.' },
+      { text: 'Requiere que el valor mayor se coloque antes que el menor (BETWEEN 8000 AND 4000).', isCorrect: false, explanation: 'Incorrecto. La sintaxis exige BETWEEN menor AND mayor; invertirlo resultaría en 0 filas.' }
     ]
   },
   {
     id: 6,
     topic: '6. Operador IN',
     question: '¿Qué ventaja pedagógica y sintáctica ofrece el operador IN frente a múltiples comparaciones?',
-    code: "SELECT * FROM ESTUDIANTES \nWHERE ciudad IN ('Bogotá', 'Medellín', 'Cali');",
+    code: "SELECT * FROM EMPLOYEES \nWHERE department_id IN (10, 20, 90);",
     options: [
-      { text: 'Es una forma concisa y legible de expresar múltiples condiciones OR sobre la misma columna.', isCorrect: true, explanation: '¡Correcto! Equivale a (ciudad = \'Bogotá\' OR ciudad = \'Medellín\' OR ciudad = \'Cali\'), siendo mucho más claro.' },
+      { text: 'Es una forma concisa y legible de expresar múltiples condiciones OR sobre la misma columna.', isCorrect: true, explanation: '¡Correcto! Equivale a (department_id = 10 OR department_id = 20 OR department_id = 90), siendo mucho más claro.' },
       { text: 'Permite unir tablas sin necesidad de usar un JOIN.', isCorrect: false, explanation: 'Incorrecto. IN evalúa pertenencia a una lista de literales, no une tablas.' },
       { text: 'Convierte el texto a mayúsculas automáticamente antes de comparar.', isCorrect: false, explanation: 'Incorrecto. Las comparaciones de cadenas en Oracle respetan la concordancia del texto.' },
       { text: 'Elimina los duplicados de la tabla automáticamente.', isCorrect: false, explanation: 'Incorrecto. Para eliminar duplicados en la salida se utiliza DISTINCT.' }
@@ -77,10 +77,10 @@ export const QUIZ_QUESTIONS = [
   {
     id: 7,
     topic: '7. Operador LIKE y Comodines',
-    question: 'En una cláusula LIKE, ¿cuál es la diferencia entre el comodín "%" (porcentaje) y "_" (guión bajo)?',
-    code: "SELECT * FROM CURSOS WHERE id_curso LIKE 'SIS___';",
+    question: 'En una cláusula LIKE sobre la tabla JOBS, ¿cuál es la diferencia entre el comodín "%" (porcentaje) y "_" (guión bajo)?',
+    code: "SELECT * FROM JOBS WHERE job_id LIKE 'SA____';",
     options: [
-      { text: '"%" representa 0 o más caracteres arbitrarios, mientras que "_" representa exactamente un único carácter.', isCorrect: true, explanation: '¡Correcto! Por ejemplo, \'SIS___\' busca exactamente la palabra SIS seguida de 3 caracteres cualesquiera (longitud fija 6).' },
+      { text: '"%" representa 0 o más caracteres arbitrarios, mientras que "_" representa exactamente un único carácter.', isCorrect: true, explanation: '¡Correcto! Por ejemplo, \'SA____\' busca exactamente la palabra SA seguida de 4 caracteres cualesquiera (longitud fija 6, como SA_REP o SA_MAN).' },
       { text: '"_" representa cualquier texto largo y "%" representa un espacio en blanco.', isCorrect: false, explanation: 'Incorrecto. Los roles están invertidos.' },
       { text: 'En Oracle SQL no existe el guión bajo, únicamente se usa el asterisco (*).', isCorrect: false, explanation: 'Incorrecto. El asterisco es para selección de columnas (*), para patrones se usa % y _.' },
       { text: 'Ambos comodines hacen exactamente lo mismo sin distinción.', isCorrect: false, explanation: 'Incorrecto. Tienen cardinalidades completamente distintas: uno es de longitud fija (1) y el otro variable (0..N).' }

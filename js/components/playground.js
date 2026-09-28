@@ -12,7 +12,7 @@ export class PlaygroundComponent {
       : containerElement;
     this.engine = new OracleSqlEngine(universityDb);
     this.history = [];
-    this.currentQuery = "SELECT nombre, carrera, promedio \nFROM ESTUDIANTES \nWHERE carrera = 'Sistemas' AND promedio >= 4.0 \nORDER BY promedio DESC;";
+    this.currentQuery = "SELECT first_name, last_name, job_id, salary \nFROM EMPLOYEES \nWHERE (job_id = 'IT_PROG' OR job_id = 'SA_REP') AND salary >= 5000 \nORDER BY salary DESC;";
 
     if (this.container) {
       this.render();
@@ -45,22 +45,22 @@ export class PlaygroundComponent {
               💡 Consultas Ejemplo
             </h4>
             <div class="query-chip-list">
-              <button class="query-chip btn-preset" data-query="SELECT DISTINCT carrera FROM ESTUDIANTES;">
-                DISTINCT carrera
+              <button class="query-chip btn-preset" data-query="SELECT DISTINCT job_id FROM EMPLOYEES;">
+                DISTINCT job_id
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT nombre, promedio FROM ESTUDIANTES WHERE promedio >= 4.5 ORDER BY promedio DESC;">
-                WHERE promedio >= 4.5
+              <button class="query-chip btn-preset" data-query="SELECT first_name, last_name, salary FROM EMPLOYEES WHERE salary >= 10000 ORDER BY salary DESC;">
+                WHERE salary >= 10000
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT nombre, carrera, semestre FROM ESTUDIANTES WHERE semestre BETWEEN 3 AND 6;">
-                BETWEEN 3 AND 6
+              <button class="query-chip btn-preset" data-query="SELECT first_name, last_name, salary FROM EMPLOYEES WHERE salary BETWEEN 4000 AND 9000;">
+                BETWEEN 4000 AND 9000
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT nombre, ciudad FROM ESTUDIANTES WHERE ciudad IN ('Bogotá', 'Medellín');">
-                IN ('Bogotá', 'Medellín')
+              <button class="query-chip btn-preset" data-query="SELECT first_name, last_name, department_id FROM EMPLOYEES WHERE department_id IN (10, 20, 90);">
+                IN (10, 20, 90)
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT nombre_curso, departamento FROM CURSOS WHERE nombre_curso LIKE 'Bases%';">
-                LIKE 'Bases%'
+              <button class="query-chip btn-preset" data-query="SELECT job_id, job_title, min_salary FROM JOBS WHERE job_id LIKE 'SA_%';">
+                LIKE 'SA_%'
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT nombre, carrera, promedio FROM ESTUDIANTES WHERE (carrera = 'Sistemas' OR carrera = 'Medicina') AND promedio >= 4.0;">
+              <button class="query-chip btn-preset" data-query="SELECT first_name, job_id, salary FROM EMPLOYEES WHERE (job_id = 'IT_PROG' OR job_id = 'SA_REP') AND salary >= 5000;">
                 AND + OR agrupado
               </button>
             </div>
@@ -71,10 +71,10 @@ export class PlaygroundComponent {
               🛡️ Prueba Constitucional
             </h4>
             <div class="query-chip-list">
-              <button class="query-chip btn-preset" data-query="SELECT * FROM ESTUDIANTES JOIN CURSOS ON 1=1;" style="border-color: rgba(234,28,4,0.3); color: #fca5a5;" title="Prueba restricción Art. II.2">
+              <button class="query-chip btn-preset" data-query="SELECT * FROM EMPLOYEES JOIN DEPARTMENTS ON 1=1;" style="border-color: rgba(234,28,4,0.3); color: #fca5a5;" title="Prueba restricción Art. II.2">
                 Test: JOIN (Restringido)
               </button>
-              <button class="query-chip btn-preset" data-query="SELECT COUNT(*) FROM ESTUDIANTES GROUP BY carrera;" style="border-color: rgba(234,28,4,0.3); color: #fca5a5;" title="Prueba restricción Art. II.2">
+              <button class="query-chip btn-preset" data-query="SELECT department_id, AVG(salary) FROM EMPLOYEES GROUP BY department_id;" style="border-color: rgba(234,28,4,0.3); color: #fca5a5;" title="Prueba restricción Art. II.2">
                 Test: GROUP BY (Restringido)
               </button>
             </div>

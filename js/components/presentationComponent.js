@@ -28,7 +28,7 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '🏷️',
           title: 'Alias de Columna (AS)',
-          text: 'Permite renombrar columnas en la salida: "promedio AS calificacion_actual". Facilita la lectura y genera encabezados profesionales en reportes.'
+          text: 'Permite renombrar columnas en la salida: "salary AS salario_mensual". Facilita la lectura y genera encabezados profesionales en reportes.'
         },
         {
           icon: '⚛️',
@@ -36,13 +36,13 @@ export const PRESENTATION_TOPICS = [
           text: 'La proyección vertical se representa formalmente con la letra griega π_{columnas}(TABLA). Extrae subconjuntos de atributos sin filtrar filas.'
         }
       ],
-      syntax: `SELECT nombre, carrera, promedio AS nota_final\nFROM ESTUDIANTES;`,
+      syntax: `SELECT first_name, last_name, job_id, salary AS salario_mensual\nFROM EMPLOYEES;`,
       rule: 'Regla del Orden Lógico: Aunque el código empieza por SELECT, Oracle internamente empieza ejecutando FROM.'
     },
     example: {
-      query: `SELECT nombre, carrera, promedio AS nota_final\nFROM ESTUDIANTES;`,
-      table: 'ESTUDIANTES',
-      prompt: 'Demostración en vivo: Observa cómo Oracle primero carga los 12 registros de ESTUDIANTES y luego proyecta solo las 3 columnas solicitadas aplicando el alias.'
+      query: `SELECT first_name, last_name, job_id, salary AS salario_mensual\nFROM EMPLOYEES;`,
+      table: 'EMPLOYEES',
+      prompt: 'Demostración en vivo: Observa cómo Oracle primero carga los 19 registros de EMPLOYEES y luego proyecta solo las columnas solicitadas aplicando el alias.'
     }
   },
   {
@@ -71,16 +71,16 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '💡',
           title: 'Catálogos y Listas Maestras',
-          text: 'Es la técnica predilecta para obtener catálogos en tiempo real (ej. lista de carreras activas, ciudades de clientes o categorías de productos).'
+          text: 'Es la técnica predilecta para obtener catálogos en tiempo real (ej. lista de cargos activos, departamentos o ciudades).'
         }
       ],
-      syntax: `SELECT DISTINCT carrera\nFROM ESTUDIANTES;`,
-      rule: 'Regla Crítica: De 12 estudiantes registrados, solo existen 4 carreras únicas. DISTINCT reduce las 12 tuplas a 4.'
+      syntax: `SELECT DISTINCT job_id\nFROM EMPLOYEES;`,
+      rule: 'Regla Crítica: De 19 empleados registrados, varios comparten los mismos cargos. DISTINCT reduce las 19 tuplas a los cargos únicos.'
     },
     example: {
-      query: `SELECT DISTINCT carrera\nFROM ESTUDIANTES;`,
-      table: 'ESTUDIANTES',
-      prompt: 'Demostración en vivo: Compara la salida con y sin DISTINCT. Nota cómo se eliminan 8 registros repetidos de Sistemas, Industrial y Medicina.'
+      query: `SELECT DISTINCT job_id\nFROM EMPLOYEES;`,
+      table: 'EMPLOYEES',
+      prompt: 'Demostración en vivo: Compara la salida con y sin DISTINCT. Nota cómo se eliminan repeticiones de IT_PROG, ST_CLERK y SA_REP.'
     }
   },
   {
@@ -99,7 +99,7 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '📝',
           title: 'Literales de Texto vs Números',
-          text: 'Los valores numéricos se escriben directamente (promedio >= 4.5). Los textos van obligatoriamente entre comillas simples (\'Sistemas\').'
+          text: 'Los valores numéricos se escriben directamente (salary >= 10000). Los textos van obligatoriamente entre comillas simples (\'IT_PROG\').'
         },
         {
           icon: '⚛️',
@@ -112,13 +112,13 @@ export const PRESENTATION_TOPICS = [
           text: 'WHERE se evalúa inmediatamente después de FROM. Oracle descarta filas antes de procesar cálculos o proyecciones, ahorrando recursos computacionales.'
         }
       ],
-      syntax: `SELECT nombre, carrera, promedio\nFROM ESTUDIANTES\nWHERE promedio >= 4.5;`,
+      syntax: `SELECT first_name, last_name, job_id, salary\nFROM EMPLOYEES\nWHERE salary >= 10000;`,
       rule: 'Regla Pedagógica: En SQL las comillas dobles " " son para identificadores; los valores de texto siempre usan comillas simples \' \'.'
     },
     example: {
-      query: `SELECT nombre, carrera, promedio\nFROM ESTUDIANTES\nWHERE promedio >= 4.5;`,
-      table: 'ESTUDIANTES',
-      prompt: 'Demostración en vivo: Observa en el pipeline cómo de las 12 tuplas, 7 son descartadas en rojo por no alcanzar 4.5 y solo 5 pasan en verde.'
+      query: `SELECT first_name, last_name, job_id, salary\nFROM EMPLOYEES\nWHERE salary >= 10000;`,
+      table: 'EMPLOYEES',
+      prompt: 'Demostración en vivo: Observa en el pipeline cómo de las 19 tuplas, solo pasan en verde las de empleados con altos ingresos (>= 10000).'
     }
   },
   {
@@ -147,15 +147,15 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '🎯',
           title: 'El Poder de los Paréntesis ( )',
-          text: 'Usa paréntesis para forzar el orden de evaluación deseado: "(carrera = \'Sistemas\' OR carrera = \'Industrial\') AND promedio >= 4.0".'
+          text: 'Usa paréntesis para forzar el orden de evaluación deseado: "(department_id = 50 OR department_id = 60) AND salary >= 5000".'
         }
       ],
-      syntax: `SELECT nombre, carrera, promedio\nFROM ESTUDIANTES\nWHERE (carrera = 'Sistemas' OR carrera = 'Medicina')\n  AND promedio >= 4.5;`,
+      syntax: `SELECT first_name, last_name, job_id, salary, department_id\nFROM EMPLOYEES\nWHERE (department_id = 50 OR department_id = 60)\n  AND salary >= 5000;`,
       rule: 'Regla de Oro en Aula: Siempre coloca paréntesis al mezclar AND y OR para evitar resultados lógicos engañosos.'
     },
     example: {
-      query: `SELECT nombre, carrera, promedio\nFROM ESTUDIANTES\nWHERE (carrera = 'Sistemas' OR carrera = 'Medicina')\n  AND promedio >= 4.5;`,
-      table: 'ESTUDIANTES',
+      query: `SELECT first_name, last_name, job_id, salary, department_id\nFROM EMPLOYEES\nWHERE (department_id = 50 OR department_id = 60)\n  AND salary >= 5000;`,
+      table: 'EMPLOYEES',
       prompt: 'Demostración en vivo: Muestra a la clase la diferencia de ejecutar con paréntesis frente a quitar los paréntesis en la consulta.'
     }
   },
@@ -175,12 +175,12 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '🧭',
           title: 'Requisito de Orden',
-          text: 'El límite menor debe escribirse obligatoriamente primero: "BETWEEN 4 AND 7". Si se invierte ("BETWEEN 7 AND 4"), el resultado siempre será 0 tuplas.'
+          text: 'El límite menor debe escribirse obligatoriamente primero: "BETWEEN 4000 AND 9000". Si se invierte, el resultado siempre será 0 tuplas.'
         },
         {
           icon: '🚫',
           title: 'Negación con NOT BETWEEN',
-          text: 'Permite buscar registros que queden por fuera del intervalo: "promedio NOT BETWEEN 3.0 AND 4.0" (notas muy bajas o muy altas).'
+          text: 'Permite buscar registros que queden por fuera del intervalo: "salary NOT BETWEEN 4000 AND 9000" (salarios muy bajos o muy altos).'
         },
         {
           icon: '✨',
@@ -188,13 +188,13 @@ export const PRESENTATION_TOPICS = [
           text: 'Reemplaza dos comparaciones redundantes por una expresión limpia, mejorando el mantenimiento del código SQL empresarial.'
         }
       ],
-      syntax: `SELECT nombre, carrera, semestre, promedio\nFROM ESTUDIANTES\nWHERE semestre BETWEEN 4 AND 6;`,
-      rule: 'Regla de Oro: Siempre menor primero y mayor después. BETWEEN 4 AND 6 incluye tanto el semestre 4 como el 6.'
+      syntax: `SELECT first_name, last_name, job_id, salary\nFROM EMPLOYEES\nWHERE salary BETWEEN 4000 AND 9000;`,
+      rule: 'Regla de Oro: Siempre menor primero y mayor después. BETWEEN 4000 AND 9000 incluye tanto 4000 como 9000.'
     },
     example: {
-      query: `SELECT nombre, carrera, semestre, promedio\nFROM ESTUDIANTES\nWHERE semestre BETWEEN 4 AND 6;`,
-      table: 'ESTUDIANTES',
-      prompt: 'Demostración en vivo: Comprueba cómo entran exactamente los semestres 4, 5 y 6, descartando los semestres 2, 3, 7 y 8.'
+      query: `SELECT first_name, last_name, job_id, salary\nFROM EMPLOYEES\nWHERE salary BETWEEN 4000 AND 9000;`,
+      table: 'EMPLOYEES',
+      prompt: 'Demostración en vivo: Comprueba cómo entran exactamente los salarios dentro del rango 4000 y 9000 (inclusive).'
     }
   },
   {
@@ -208,31 +208,31 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '📦',
           title: 'Sintaxis Limpia y Compacta',
-          text: 'Escribir "ciudad IN (\'Bogotá\', \'Medellín\', \'Cali\')" sustituye tres cláusulas OR repetitivas sobre la misma columna.'
+          text: 'Escribir "department_id IN (10, 20, 90)" sustituye tres cláusulas OR repetitivas sobre la misma columna.'
         },
         {
           icon: '🔁',
           title: 'Equivalencia Semántica',
-          text: 'Equivale de manera idéntica a: (ciudad = \'Bogotá\' OR ciudad = \'Medellín\' OR ciudad = \'Cali\').'
+          text: 'Equivale de manera idéntica a: (department_id = 10 OR department_id = 20 OR department_id = 90).'
         },
         {
           icon: '⚛️',
           title: 'Álgebra Relacional: ∈ (Pertenencia)',
-          text: 'Se expresa formalmente como: ciudad ∈ {\'Bogotá\', \'Medellín\', \'Cali\'}.'
+          text: 'Se expresa formalmente como: department_id ∈ {10, 20, 90}.'
         },
         {
           icon: '🚫',
           title: 'Negación con NOT IN',
-          text: 'Filtra tuplas cuyo valor no pertenezca al conjunto especificado (ej. estudiantes de ciudades foráneas).'
+          text: 'Filtra tuplas cuyo valor no pertenezca al conjunto especificado (ej. empleados de otros departamentos).'
         }
       ],
-      syntax: `SELECT nombre, carrera, ciudad\nFROM ESTUDIANTES\nWHERE ciudad IN ('Bogotá', 'Medellín', 'Cali');`,
-      rule: 'Regla de Oro: Ideal para filtros discretos no contiguos donde BETWEEN no aplica (ej. ciudades, estados o carreras).'
+      syntax: `SELECT first_name, last_name, job_id, department_id\nFROM EMPLOYEES\nWHERE department_id IN (10, 20, 90);`,
+      rule: 'Regla de Oro: Ideal para filtros discretos no contiguos donde BETWEEN no aplica (ej. departamentos o cargos).'
     },
     example: {
-      query: `SELECT nombre, carrera, ciudad\nFROM ESTUDIANTES\nWHERE ciudad IN ('Bogotá', 'Medellín', 'Cali');`,
-      table: 'ESTUDIANTES',
-      prompt: 'Demostración en vivo: Muestra cómo se filtran los estudiantes de Bogotá, Medellín y Cali, excluyendo Barranquilla, Bucaramanga y Cartagena.'
+      query: `SELECT first_name, last_name, job_id, department_id\nFROM EMPLOYEES\nWHERE department_id IN (10, 20, 90);`,
+      table: 'EMPLOYEES',
+      prompt: 'Demostración en vivo: Muestra cómo se filtran los empleados de los departamentos 10, 20 y 90, excluyendo los departamentos 50, 60 y 80.'
     }
   },
   {
@@ -246,31 +246,31 @@ export const PRESENTATION_TOPICS = [
         {
           icon: '🌐',
           title: 'Comodín Porcentaje (%)',
-          text: 'Representa cero, uno o múltiples caracteres arbitrarios de cualquier longitud. \'SIS%\' busca cualquier texto que inicie con "SIS".'
+          text: 'Representa cero, uno o múltiples caracteres arbitrarios de cualquier longitud. \'SA_%\' busca cualquier cargo que inicie con "SA_".'
         },
         {
           icon: '🎯',
           title: 'Comodín Guión Bajo (_)',
-          text: 'Representa exactamente un único carácter individual. \'SIS___\' busca exactamente la palabra SIS seguida de 3 caracteres (longitud fija 6).'
+          text: 'Representa exactamente un único carácter individual. \'SA___\' busca exactamente la palabra SA seguida de 3 caracteres (longitud fija 5).'
         },
         {
           icon: '🔍',
           title: 'Contiene Subcadena (%texto%)',
-          text: 'Para buscar una palabra en cualquier posición interna de la cadena: "nombre_curso LIKE \'%Datos%\'".'
+          text: 'Para buscar una palabra en cualquier posición interna de la cadena: "job_title LIKE \'%Manager%\'".'
         },
         {
           icon: '🔤',
           title: 'Sensibilidad a Mayúsculas',
-          text: 'En Oracle SQL estándar, LIKE es sensible a mayúsculas y minúsculas (\'SIS%\' no coincide con \'sis101\').'
+          text: 'En Oracle SQL estándar, LIKE es sensible a mayúsculas y minúsculas (\'SA_%\' no coincide con \'sa_%\').'
         }
       ],
-      syntax: `SELECT id_curso, nombre_curso, departamento\nFROM CURSOS\nWHERE id_curso LIKE 'SIS%';`,
+      syntax: `SELECT job_id, job_title, min_salary, max_salary\nFROM JOBS\nWHERE job_id LIKE 'SA_%';`,
       rule: 'Regla Mnemotécnica en Clase: % = cualquier longitud (0 a infinito); _ = exactamente 1 carácter (longitud estricta).'
     },
     example: {
-      query: `SELECT id_curso, nombre_curso, departamento\nFROM CURSOS\nWHERE id_curso LIKE 'SIS%';`,
-      table: 'CURSOS',
-      prompt: 'Demostración en vivo: Observa cómo \'SIS%\' recupera tanto SIS101 como SIS102. Prueba a cambiar el patrón a \'%Bases%\' en vivo.'
+      query: `SELECT job_id, job_title, min_salary, max_salary\nFROM JOBS\nWHERE job_id LIKE 'SA_%';`,
+      table: 'JOBS',
+      prompt: 'Demostración en vivo: Observa cómo \'SA_%\' recupera tanto SA_MAN como SA_REP. Prueba a cambiar el patrón a \'IT_%\' en vivo.'
     }
   }
 ];

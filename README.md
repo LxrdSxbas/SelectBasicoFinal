@@ -44,11 +44,15 @@ Desarrollada bajo las directrices estrictas de la **Constitución del Proyecto**
 
 ---
 
-## 🗄️ Dataset Universitario (`universityDb.js`)
+## 🗄️ Esquema Oracle HR (`universityDb.js` / `hrDb.js`)
 
-- **`ESTUDIANTES`**: 12 tuplas con datos académicos (`id`, `nombre`, `apellido`, `carrera`, `semestre`, `promedio`, `ciudad`, `estado`).
-- **`CURSOS`**: 8 asignaturas universitarias con código, créditos y cupos.
-- **`MATRICULAS`**: 8 registros de notas académicas por periodo.
+- **`EMPLOYEES`**: 19 tuplas maestros con datos de empleados (`employee_id`, `first_name`, `last_name`, `email`, `phone_number`, `hire_date`, `job_id`, `salary`, `commission_pct`, `manager_id`, `department_id`).
+- **`DEPARTMENTS`**: Departamentos operativos y administrativos (`department_id`, `department_name`, `manager_id`, `location_id`).
+- **`JOBS`**: Cargos con salarios mínimos y máximos (`job_id`, `job_title`, `min_salary`, `max_salary`).
+- **`LOCATIONS`**: Sedes físicas de la organización (`location_id`, `street_address`, `postal_code`, `city`, `state_province`, `country_id`).
+- **`COUNTRIES`**: Países asignados a regiones (`country_id`, `country_name`, `region_id`).
+- **`REGIONS`**: Regiones mundiales de operación (`region_id`, `region_name`).
+- **`JOB_HISTORY`**: Historial cronológico de puestos (`employee_id`, `start_date`, `end_date`, `job_id`, `department_id`).
 
 ---
 
